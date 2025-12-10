@@ -1,3 +1,14 @@
+/* ========== ОСНОВНЫЕ ИСПРАВЛЕНИЯ ========== */
+:root {
+    --primary-color: #005439;
+    --secondary-color: #003d29;
+    --text-color: #252525;
+    --light-text: #666;
+    --background: #f2f1f0;
+    --white: #ffffff;
+}
+
+/* Сброс и базовые стили */
 * {
     margin: 0;
     padding: 0;
@@ -6,86 +17,35 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-html {
-    scroll-behavior: smooth;
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
 }
 
 body {
     font-family: 'CoFo', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-    color: #252525;
-    background-color: #f2f1f0;
+    color: var(--text-color);
+    background-color: var(--background);
     line-height: 1.6;
     font-weight: 300;
-    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-::selection {
-    background-color: rgba(0, 84, 57, 0.2);
-    color: #252525;
-}
-
+/* Контейнер с исправлениями */
 .container {
     max-width: 1440px;
+    width: 100%;
     margin: 0 auto;
     padding: 0 40px;
 }
 
-/* Типография */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 300;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-}
+/* ========== ИСПРАВЛЕНИЯ ДЛЯ СЕКЦИЙ ========== */
 
-h1 {
-    font-size: 6.5vw;
-    font-weight: 250;
-    letter-spacing: -0.04em;
-    margin-bottom: 1.5rem;
-}
-
-h2 {
-    font-size: 4.5vw;
-    font-weight: 300;
-    letter-spacing: -0.03em;
-    margin-bottom: 2rem;
-}
-
-h3 {
-    font-size: 2.2rem;
-    font-weight: 350;
-    margin-bottom: 1rem;
-}
-
-h4 {
-    font-size: 1.4rem;
-    font-weight: 400;
-    margin-bottom: 0.8rem;
-}
-
-p {
-    font-size: 1rem;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    color: #4a4a4a;
-}
-
-.text-light {
-    font-weight: 250;
-    color: #666;
-}
-
-.text-uppercase {
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 0.85rem;
-}
-
-.text-center {
-    text-align: center;
-}
-
-/* Шапка */
+/* Шапка - исправляем z-index */
 .header {
     position: fixed;
     top: 0;
@@ -99,128 +59,7 @@ p {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.header.scrolled {
-    padding: 0.8rem 0;
-    background-color: rgba(242, 241, 240, 0.98);
-}
-
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    z-index: 1001;
-}
-
-.logo img {
-    height: 32px;
-    width: auto;
-    transition: transform 0.3s ease;
-}
-
-.logo:hover img {
-    transform: scale(1.05);
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-}
-
-.nav-link {
-    position: relative;
-    text-decoration: none;
-    color: #252525;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 400;
-    padding: 0.5rem 0;
-    transition: color 0.3s ease;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background-color: #005439;
-    transition: width 0.3s ease;
-}
-
-.nav-link:hover {
-    color: #005439;
-}
-
-.nav-link:hover::after {
-    width: 100%;
-}
-
-.contact-btn {
-    background-color: #005439;
-    color: white !important;
-    padding: 0.8rem 2rem;
-    border-radius: 0;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 400;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.contact-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s ease;
-}
-
-.contact-btn:hover {
-    background-color: #003d29;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(0, 84, 57, 0.3);
-}
-
-.contact-btn:hover::before {
-    left: 100%;
-}
-
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    position: relative;
-    z-index: 1001;
-}
-
-.menu-toggle span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background-color: #252525;
-    margin: 4px auto;
-    transition: all 0.3s ease;
-}
-
-/* Герой-секция */
+/* Герой секция - исправляем переполнение */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -229,6 +68,7 @@ p {
     overflow: hidden;
     padding: 6rem 0 4rem;
     background: linear-gradient(135deg, #f2f1f0 0%, #e8e7e6 100%);
+    width: 100%;
 }
 
 .hero-content {
@@ -238,30 +78,6 @@ p {
     margin-top: 3rem;
 }
 
-.hero-title {
-    font-size: 5.5vw;
-    font-weight: 250;
-    line-height: 1;
-    margin-bottom: 2rem;
-    position: relative;
-}
-
-.hero-title .light {
-    font-weight: 200;
-    color: #666;
-    display: block;
-    margin-top: 0.5rem;
-}
-
-.hero-subtitle {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #666;
-    max-width: 500px;
-    margin-bottom: 3rem;
-    font-weight: 300;
-}
-
 .hero-image {
     position: absolute;
     top: 0;
@@ -269,282 +85,17 @@ p {
     width: 55%;
     height: 100%;
     z-index: 1;
-}
-
-.hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    filter: grayscale(0.1) contrast(1.1);
-    transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.hero:hover .hero-image img {
-    transform: scale(1.03);
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, #f2f1f0 0%, rgba(242, 241, 240, 0.8) 30%, transparent 50%);
-    z-index: 2;
-}
-
-.project-info {
-    margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(37, 37, 37, 0.1);
-}
-
-.project-info p {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.5rem;
-    color: #666;
-}
-
-/* Кнопки */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem 2.5rem;
-    background-color: transparent;
-    color: #252525;
-    text-decoration: none;
-    border: 1px solid #252525;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 0.1em;
-    font-weight: 400;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
     overflow: hidden;
 }
 
-.btn::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: #252525;
-    transition: left 0.4s ease;
-    z-index: -1;
-}
-
-.btn:hover {
-    color: #f2f1f0;
-    border-color: #252525;
-}
-
-.btn:hover::after {
-    left: 0;
-}
-
-.btn-primary {
-    background-color: #005439;
-    border-color: #005439;
-    color: white;
-}
-
-.btn-primary::after {
-    background: #003d29;
-}
-
-.btn-outline {
-    background-color: transparent;
-    border-color: #252525;
-    color: #252525;
-}
-
-.btn-outline:hover {
-    color: white;
-}
-
-.btn-small {
-    padding: 0.7rem 1.8rem;
-    font-size: 0.8rem;
-}
-
-/* Преимущества */
-.features {
-    padding: 8rem 0;
-    background-color: #fff;
-    position: relative;
-}
-
-.features::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(37, 37, 37, 0.1), transparent);
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 3rem;
-    margin-top: 4rem;
-}
-
-.feature-card {
-    padding: 2.5rem 2rem;
-    background-color: #fafafa;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-.feature-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 0;
-    background-color: #005439;
-    transition: height 0.6s ease;
-}
-
-.feature-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-    background-color: white;
-}
-
-.feature-card:hover::before {
-    height: 100%;
-}
-
-.feature-icon {
-    font-size: 2.8rem;
-    color: #005439;
-    margin-bottom: 1.8rem;
-    display: inline-block;
-    transition: transform 0.3s ease;
-}
-
-.feature-card:hover .feature-icon {
-    transform: scale(1.1);
-}
-
-.feature-card h3 {
-    font-size: 1.4rem;
-    font-weight: 400;
-    margin-bottom: 1rem;
-    color: #252525;
-}
-
-.feature-card p {
-    font-size: 0.9rem;
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 0;
-}
-
-/* Возможности */
-.capabilities {
-    padding: 8rem 0;
-    background-color: #f2f1f0;
-    position: relative;
-}
-
-.section-title {
-    font-size: 4.5vw;
-    font-weight: 300;
-    letter-spacing: -0.03em;
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
-
-.section-subtitle {
-    max-width: 600px;
-    margin: 0 auto 3rem;
-    font-size: 1.1rem;
-    color: #666;
-    text-align: center;
-    line-height: 1.8;
-    font-weight: 300;
-}
-
-/* О компании */
-.about {
-    padding: 8rem 0;
-    position: relative;
-    background-color: white;
-}
-
-.about h2 {
-    max-width: 800px;
-    margin-bottom: 4rem;
-    font-weight: 300;
-    line-height: 1.2;
-}
-
-.services {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.service {
-    flex: 1;
-    min-width: 180px;
-    padding: 2rem 0;
-    border-top: 1px solid #b4b4b3;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.service:hover {
-    border-color: #005439;
-    padding-left: 1rem;
-}
-
-.service::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    opacity: 0;
-    transition: all 0.3s ease;
-    color: #005439;
-}
-
-.service:hover::before {
-    opacity: 1;
-    left: -1.5rem;
-}
-
-/* Портфолио */
-.portfolio {
-    background-color: #fff;
-}
-
+/* Исправляем проблему с портфолио */
 .portfolio-item {
     min-height: 100vh;
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
-    background-color: #f2f1f0;
-}
-
-.portfolio-item:nth-child(even) {
-    flex-direction: row-reverse;
-    background-color: white;
+    width: 100%;
 }
 
 .portfolio-image {
@@ -552,53 +103,12 @@ p {
     height: 100vh;
     position: relative;
     overflow: hidden;
-}
-
-.portfolio-image img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-    will-change: transform;
-}
-
-.portfolio-item:hover .portfolio-image img {
-    transform: scale(1.05);
-}
-
-.portfolio-overlay {
-    position: absolute;
-    bottom: 4rem;
-    right: 4rem;
-    color: white;
-    text-align: right;
-    z-index: 2;
-}
-
-.portfolio-overlay h3 {
-    font-size: 8vw;
-    font-weight: 200;
-    letter-spacing: -0.05em;
-    line-height: 0.9;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.portfolio-image::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, rgba(0, 0, 0, 0.2), transparent 50%);
-    z-index: 1;
 }
 
 .portfolio-info {
     flex: 0 0 500px;
     padding: 4rem;
-    background-color: #f2f1f0;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -607,356 +117,10 @@ p {
     z-index: 2;
 }
 
-.portfolio-item:nth-child(even) .portfolio-info {
-    background-color: white;
-}
-
-.portfolio-info p {
-    font-size: 0.85rem;
-    line-height: 1.6;
-    color: #666;
-    margin-bottom: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-}
-
-.portfolio-info .btn {
-    align-self: flex-start;
-    margin-top: 1rem;
-}
-
-/* Слайдеры */
-.projects-slider,
-.media-slider {
-    margin-top: 4rem;
-    overflow: hidden;
-    position: relative;
-}
-
-.swiper {
-    width: 100%;
-    height: 100%;
-}
-
-.swiper-slide {
-    height: 600px;
-    background: #ddd;
-    position: relative;
-    overflow: hidden;
-}
-
-.swiper-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 1.2s ease;
-}
-
-.swiper-slide:hover img {
-    transform: scale(1.05);
-}
-
-.swiper-slide-content {
-    position: absolute;
-    bottom: 3rem;
-    left: 3rem;
-    color: white;
-    z-index: 2;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-    color: #252525;
-    width: 50px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 0;
-    transition: all 0.3s ease;
-}
-
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-    background: white;
-    transform: scale(1.1);
-}
-
-.swiper-button-next::after,
-.swiper-button-prev::after {
-    font-size: 1.2rem;
-}
-
-/* Шоурум */
-.showroom {
-    padding: 8rem 0;
-    background-color: #f2f1f0;
-}
-
-#map {
-    height: 500px;
-    width: 100%;
-    margin-top: 3rem;
-    background-color: #ddd;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Блок с цифрами/статистикой */
-.stats {
-    padding: 6rem 0;
-    background-color: white;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 3rem;
-    text-align: center;
-}
-
-.stat-item {
-    padding: 2rem;
-}
-
-.stat-number {
-    font-size: 4rem;
-    font-weight: 200;
-    color: #005439;
-    line-height: 1;
-    margin-bottom: 1rem;
-}
-
-.stat-label {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #666;
-}
-
-/* Процесс работы */
-.process {
-    padding: 8rem 0;
-    background-color: #f2f1f0;
-}
-
-.process-steps {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    margin-top: 4rem;
-}
-
-.process-step {
-    flex: 1;
-    min-width: 200px;
-    padding: 2rem;
-    position: relative;
-}
-
-.step-number {
-    font-size: 4rem;
-    font-weight: 200;
-    color: rgba(37, 37, 37, 0.1);
-    margin-bottom: 1.5rem;
-    line-height: 1;
-}
-
-/* Футер */
-.footer {
-    background-color: #1a1a1a;
-    color: #aaa;
-    padding: 6rem 0 3rem;
-    position: relative;
-}
-
-.footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 4rem;
-    margin-bottom: 4rem;
-}
-
-.footer-logo img {
-    height: 32px;
-    margin-bottom: 1.5rem;
-    filter: brightness(0) invert(1);
-}
-
-.footer-logo p {
-    font-size: 1rem;
-    color: #888;
-    max-width: 300px;
-    line-height: 1.6;
-}
-
-.footer-section h3,
-.footer-contact h4 {
-    color: white;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 1.5rem;
-    font-weight: 400;
-}
-
-.footer-section p,
-.footer-section a {
-    color: #aaa;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 0.8rem;
-    transition: color 0.3s ease;
-    font-size: 0.95rem;
-}
-
-.footer-section a:hover {
-    color: white;
-}
-
-.telegram-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    color: #0088cc;
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 0.8rem 1.5rem;
-    border: 1px solid rgba(0, 136, 204, 0.3);
-    border-radius: 0;
-    transition: all 0.3s ease;
-}
-
-.telegram-link:hover {
-    background-color: rgba(0, 136, 204, 0.1);
-    color: #0088cc;
-    border-color: #0088cc;
-}
-
-.footer-bottom {
-    padding-top: 3rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
-    color: #666;
-    font-size: 0.9rem;
-}
-
-/* Анимации */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.fade-in-up {
-    animation: fadeInUp 0.8s ease forwards;
-}
-
-/* Кастомный скроллбар */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f2f1f0;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #b4b4b3;
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #005439;
-}
-
-/* Лоадер */
-.loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #f2f1f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-.loader.hidden {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.loader-circle {
-    width: 60px;
-    height: 60px;
-    border: 3px solid rgba(0, 84, 57, 0.1);
-    border-top-color: #005439;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-/* Адаптивность */
-@media (max-width: 1200px) {
-    .container {
-        padding: 0 30px;
-    }
-    
-    h1 {
-        font-size: 5rem;
-    }
-    
-    h2 {
-        font-size: 3.5rem;
-    }
-    
-    .portfolio-info {
-        flex: 0 0 450px;
-        padding: 3rem;
-    }
-}
-
+/* Исправляем проблему с отступами в адаптиве */
 @media (max-width: 992px) {
-    h1 {
-        font-size: 4rem;
-    }
-    
-    h2 {
-        font-size: 2.8rem;
-    }
-    
-    .hero-title {
-        font-size: 3.5rem;
-    }
-    
-    .section-title {
-        font-size: 3rem;
-    }
-    
     .portfolio-item {
-        flex-direction: column;
+        flex-direction: column !important;
         min-height: auto;
     }
     
@@ -964,51 +128,82 @@ p {
     .portfolio-info {
         flex: none;
         width: 100%;
-        height: 50vh;
+        height: auto;
     }
     
     .portfolio-info {
         height: auto;
+        min-height: 50vh;
         padding: 3rem 2rem;
     }
     
-    .portfolio-overlay h3 {
-        font-size: 4rem;
-    }
-    
-    .nav-links {
-        gap: 2rem;
+    .portfolio-image {
+        height: 60vh;
     }
 }
 
+/* ========== ИСПРАВЛЕНИЯ ДЛЯ ТЕКСТОВЫХ БЛОКОВ ========== */
+
+/* Убираем конфликтующие стили для текста */
+.text-content-block {
+    padding: 4rem 0;
+    position: relative;
+}
+
+.text-content-block h1,
+.text-content-block h2,
+.text-content-block h3 {
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+.text-content-block h1 {
+    font-size: clamp(3rem, 6vw, 6.5rem);
+    margin-bottom: 1.5rem;
+}
+
+.text-content-block h2 {
+    font-size: clamp(2rem, 4vw, 4.5rem);
+    margin-bottom: 2rem;
+}
+
+/* ========== ИСПРАВЛЕНИЯ ДЛЯ КНОПОК ========== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    background-color: transparent;
+    color: var(--text-color);
+    text-decoration: none;
+    border: 1px solid var(--text-color);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* ========== ИСПРАВЛЕНИЯ ДЛЯ АДАПТИВА ========== */
 @media (max-width: 768px) {
     .container {
         padding: 0 20px;
     }
     
-    h1 {
-        font-size: 3rem;
-    }
-    
-    h2 {
-        font-size: 2.2rem;
-    }
-    
-    h3 {
-        font-size: 1.8rem;
-    }
-    
     .hero {
         padding: 5rem 0 3rem;
         min-height: auto;
-    }
-    
-    .hero-content {
-        margin-top: 2rem;
-    }
-    
-    .hero-title {
-        font-size: 2.5rem;
     }
     
     .hero-image {
@@ -1018,24 +213,25 @@ p {
         margin-top: 2rem;
     }
     
-    .hero-overlay {
-        background: linear-gradient(180deg, rgba(242, 241, 240, 0.7) 0%, transparent 30%);
+    .hero-content {
+        margin-top: 0;
     }
     
+    /* Мобильное меню */
     .nav-links {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100vh;
-        background-color: #f2f1f0;
+        background-color: var(--background);
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 2.5rem;
         transform: translateX(-100%);
         transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 1000;
+        z-index: 999;
     }
     
     .nav-links.active {
@@ -1045,682 +241,57 @@ p {
     .menu-toggle {
         display: block;
     }
-    
-    .menu-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(6px, 6px);
-    }
-    
-    .menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .menu-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
-    }
-    
-    .features,
-    .capabilities,
-    .about,
-    .showroom {
-        padding: 5rem 0;
-    }
-    
-    .features-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .services {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-    
-    .service {
-        min-width: 100%;
-    }
-    
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        text-align: center;
-    }
-    
-    .footer-logo p {
-        max-width: 100%;
-    }
 }
 
-@media (max-width: 576px) {
-    h1 {
-        font-size: 2.5rem;
-    }
-    
-    h2 {
-        font-size: 2rem;
-    }
-    
-    .hero-title {
-        font-size: 2rem;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .portfolio-overlay h3 {
-        font-size: 2.5rem;
-        bottom: 2rem;
-        right: 2rem;
-    }
-    
-    .btn {
-        padding: 0.8rem 2rem;
-        font-size: 0.85rem;
-    }
-    
-    .swiper-slide {
-        height: 400px;
-    }
-}
-
-/* Эффекты для изображений */
-.image-hover-zoom {
-    overflow: hidden;
-}
-
-.image-hover-zoom img {
-    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.image-hover-zoom:hover img {
-    transform: scale(1.1);
-}
-
-/* Эффект параллакса */
-.parallax {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-/* Текстовые эффекты */
-.text-gradient {
-    background: linear-gradient(45deg, #005439, #00885c);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* Сетка изображений */
-.image-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    margin-top: 3rem;
-}
-
-.grid-item {
+/* ========== ИСПРАВЛЕНИЯ ДЛЯ ПЕРЕКРЫТИЯ ЭЛЕМЕНТОВ ========== */
+.section {
     position: relative;
-    overflow: hidden;
-    aspect-ratio: 4/3;
-}
-
-.grid-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-}
-
-.grid-item:hover img {
-    transform: scale(1.05);
-}
-
-/* Модальное окно */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    z-index: 2000;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.modal.active {
-    display: flex;
-    opacity: 1;
-}
-
-.modal-content {
-    max-width: 90%;
-    max-height: 90%;
-    position: relative;
-}
-
-.modal-close {
-    position: absolute;
-    top: -40px;
-    right: 0;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-}
-
-/* Форма */
-.form-group {
-    margin-bottom: 2rem;
-}
-
-.form-control {
-    width: 100%;
-    padding: 1rem;
-    background: transparent;
-    border: 1px solid rgba(37, 37, 37, 0.2);
-    color: #252525;
-    font-size: 1rem;
-    font-family: inherit;
-    transition: all 0.3s ease;
-}
-
-.form-control:focus {
-    outline: none;
-    border-color: #005439;
-}
-
-.form-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #666;
-}
-
-/* Добавь эти стили к существующим */
-
-/* Стили для динамических текстовых блоков */
-.text-block {
-    position: relative;
-    padding: 2rem 0;
-}
-
-.text-block h1 {
-    font-size: clamp(3rem, 6vw, 8rem);
-    font-weight: 250;
-    line-height: 0.95;
-    letter-spacing: -0.03em;
-    margin-bottom: 1.5rem;
-    position: relative;
-    display: inline-block;
-}
-
-.text-block h1::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 60px;
-    height: 1px;
-    background: #005439;
-    transition: width 0.3s ease;
-}
-
-.text-block:hover h1::after {
-    width: 100%;
-}
-
-.text-block p {
-    font-size: clamp(1rem, 1.2vw, 1.4rem);
-    line-height: 1.6;
-    color: #4a4a4a;
-    max-width: 600px;
-    margin-bottom: 2rem;
-    font-weight: 300;
-}
-
-.text-block .details {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #666;
-    margin-bottom: 1.5rem;
-}
-
-.text-block .details p {
-    margin-bottom: 0.3rem;
-    font-size: inherit;
-}
-
-.text-block .btn {
-    margin-top: 1rem;
-    position: relative;
-    overflow: hidden;
     z-index: 1;
 }
 
-.text-block .btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: #005439;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-    z-index: -1;
-}
-
-.text-block .btn:hover::before {
-    width: 300%;
-    height: 300%;
-}
-
-/* Стили для изображений с наложением текста */
-.image-with-text {
-    position: relative;
-    min-height: 90vh;
-    display: flex;
-    align-items: flex-end;
-    overflow: hidden;
-}
-
-.image-with-text .background-image {
+.section-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    z-index: 1;
-    transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.image-with-text:hover .background-image {
-    transform: scale(1.05);
-}
-
-.image-with-text .content-overlay {
-    position: relative;
     z-index: 2;
-    width: 100%;
-    padding: 4rem;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7) 30%);
-    color: white;
 }
 
-.image-with-text .content-overlay h1 {
-    color: white;
-    font-size: clamp(2.5rem, 5vw, 6rem);
-    margin-bottom: 1.5rem;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-}
-
-.image-with-text .content-overlay p {
-    color: rgba(255, 255, 255, 0.9);
-    max-width: 500px;
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-}
-
-/* Стили для разделенных секций */
-.split-section {
+/* ========== ИСПРАВЛЕНИЯ ДЛЯ СЕТОК ========== */
+.grid-fix {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 100vh;
-    position: relative;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    width: 100%;
 }
 
-.split-section .text-side {
-    padding: 8rem 4rem;
+/* ========== ДОПОЛНИТЕЛЬНЫЕ ИСПРАВЛЕНИЯ ========== */
+
+/* Исправляем проблему с прокруткой */
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Исправляем проблему с изображениями */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Исправляем проблему с фоном */
+.background-fix {
+    background-attachment: scroll !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+/* Исправляем проблему с высотой секций */
+.min-height-fix {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: #f2f1f0;
-    position: relative;
-}
-
-.split-section .image-side {
-    position: relative;
-    overflow: hidden;
-}
-
-.split-section .image-side img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 1.2s ease;
-}
-
-.split-section .image-side:hover img {
-    transform: scale(1.05);
-}
-
-.split-section.reverse {
-    grid-template-columns: 1fr 1fr;
-    direction: rtl;
-}
-
-.split-section.reverse .text-side {
-    direction: ltr;
-}
-
-/* Стили для плавающего текста */
-.floating-text {
-    position: absolute;
-    z-index: 3;
-    pointer-events: none;
-}
-
-.floating-text h1 {
-    font-size: 10vw;
-    font-weight: 200;
-    color: rgba(255, 255, 255, 0.1);
-    line-height: 1;
-    margin: 0;
-}
-
-/* Стили для анимированного появления текста */
-.reveal-text {
-    position: relative;
-    overflow: hidden;
-}
-
-.reveal-text h1,
-.reveal-text p {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: revealText 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-}
-
-.reveal-text p {
-    animation-delay: 0.3s;
-}
-
-.reveal-text .details {
-    animation-delay: 0.5s;
-}
-
-.reveal-text .btn {
-    animation-delay: 0.7s;
-}
-
-@keyframes revealText {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Стили для сетки текстовых блоков */
-.text-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
-    padding: 4rem 0;
-}
-
-.text-grid-item {
-    position: relative;
-    padding: 2rem;
-    border-left: 2px solid transparent;
-    transition: all 0.3s ease;
-}
-
-.text-grid-item:hover {
-    border-left-color: #005439;
-    padding-left: 3rem;
-    background: rgba(0, 84, 57, 0.02);
-}
-
-.text-grid-item h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.text-grid-item .btn {
-    margin-top: 1.5rem;
-}
-
-/* Стили для минималистичных текстовых блоков */
-.minimal-text-block {
-    padding: 6rem 4rem;
-    background: white;
-    position: relative;
-}
-
-.minimal-text-block h1 {
-    font-size: 4.5rem;
-    font-weight: 300;
-    letter-spacing: -0.03em;
-    margin-bottom: 2rem;
-    position: relative;
-    display: inline-block;
-}
-
-.minimal-text-block h1 span {
-    font-weight: 200;
-    color: #666;
-}
-
-.minimal-text-block::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100px;
-    height: 1px;
-    background: #005439;
-}
-
-.minimal-text-block .line-divider {
-    width: 100px;
-    height: 1px;
-    background: #b4b4b3;
-    margin: 2rem 0;
-}
-
-/* Стили для полной ширины текста */
-.full-width-text {
-    padding: 8rem 0;
-    background: #f2f1f0;
-    text-align: center;
-}
-
-.full-width-text h1 {
-    font-size: 5vw;
-    font-weight: 300;
-    max-width: 1200px;
-    margin: 0 auto 2rem;
-    line-height: 1.1;
-}
-
-.full-width-text p {
-    font-size: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto 3rem;
-    color: #666;
-}
-
-/* Стили для текста с боковым декоративным элементом */
-.side-decorated-text {
-    padding: 4rem;
-    border-left: 4px solid #005439;
-    margin: 3rem 0;
-    position: relative;
-}
-
-.side-decorated-text::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -4px;
-    width: 8px;
-    height: 8px;
-    background: #005439;
-    border-radius: 50%;
-}
-
-.side-decorated-text h1 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-}
-
-/* Стили для текста с фоновым узором */
-.patterned-text {
-    position: relative;
-    padding: 6rem 4rem;
-    overflow: hidden;
-}
-
-.patterned-text::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNFMkUxRTIiIGZpbGwtb3BhY2l0eT0iMC4yIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIxIi8+PC9nPjwvZz48L3N2Zz4=');
-    opacity: 0.1;
-    z-index: -1;
-}
-
-.patterned-text h1 {
-    font-size: 4rem;
-    margin-bottom: 2rem;
-    position: relative;
-    z-index: 1;
-}
-
-/* Стили для текста с градиентным фоном */
-.gradient-text-block {
-    padding: 6rem 4rem;
-    background: linear-gradient(135deg, #f2f1f0 0%, #e8e7e6 100%);
-    position: relative;
-}
-
-.gradient-text-block h1 {
-    font-size: 4.5rem;
-    font-weight: 300;
-    background: linear-gradient(45deg, #252525, #666);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 2rem;
-}
-
-/* Стили для текста с цитатой */
-.quote-text-block {
-    padding: 4rem;
-    position: relative;
-}
-
-.quote-text-block::before,
-.quote-text-block::after {
-    content: '"';
-    position: absolute;
-    font-size: 8rem;
-    color: rgba(0, 84, 57, 0.1);
-    font-weight: 300;
-}
-
-.quote-text-block::before {
-    top: 0;
-    left: 1rem;
-}
-
-.quote-text-block::after {
-    bottom: -2rem;
-    right: 1rem;
-}
-
-.quote-text-block h1 {
-    font-size: 2.5rem;
-    font-weight: 300;
-    line-height: 1.3;
-    font-style: italic;
-    margin-bottom: 2rem;
-}
-
-/* Адаптивность для текстовых блоков */
-@media (max-width: 1024px) {
-    .split-section {
-        grid-template-columns: 1fr;
-        min-height: auto;
-    }
-    
-    .split-section .text-side,
-    .split-section .image-side {
-        min-height: 50vh;
-    }
-    
-    .text-block h1 {
-        font-size: clamp(2.5rem, 5vw, 4rem);
-    }
-    
-    .minimal-text-block h1 {
-        font-size: 3rem;
-    }
-    
-    .full-width-text h1 {
-        font-size: 3rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .text-block,
-    .minimal-text-block,
-    .patterned-text,
-    .gradient-text-block {
-        padding: 3rem 2rem;
-    }
-    
-    .image-with-text .content-overlay {
-        padding: 2rem;
-    }
-    
-    .split-section .text-side {
-        padding: 4rem 2rem;
-    }
-    
-    .text-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .floating-text h1 {
-        font-size: 4rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .text-block h1 {
-        font-size: 2.2rem;
-    }
-    
-    .minimal-text-block h1 {
-        font-size: 2.2rem;
-    }
-    
-    .full-width-text h1 {
-        font-size: 2rem;
-    }
-    
-    .image-with-text .content-overlay h1 {
-        font-size: 2rem;
-    }
 }
