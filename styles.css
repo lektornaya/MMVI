@@ -94,6 +94,146 @@ body {
     background: radial-gradient(circle at center, #222 0%, #111 65%, #000 100%);
 }
 
+/* ================================
+   MMVI HERO — PIXEL PERFECT
+================================ */
+
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 60px 80px;
+    overflow: hidden;
+    font-family: "CoFo Sans", "Inter", sans-serif;
+}
+
+/* Фон-видео */
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: -2;
+}
+
+.hero-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* затемнение + шум */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.85));
+    backdrop-filter: blur(1px);
+    z-index: -1;
+}
+
+/* Контейнер */
+.hero-inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.hero-left {
+    max-width: 750px;
+}
+
+/* Заголовок */
+.hero-title {
+    font-size: 92px;
+    font-weight: 300;
+    line-height: 0.92;
+    color: #fff;
+    letter-spacing: -2px;
+    margin-bottom: 25px;
+}
+
+.hero-title span {
+    opacity: 0.5;
+}
+
+/* Текст */
+.hero-sub {
+    font-size: 18px;
+    color: rgba(255,255,255,0.7);
+    max-width: 450px;
+    margin-bottom: 40px;
+}
+
+/* Кнопка */
+.hero-btn {
+    display: inline-block;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 14px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    transition: 0.3s ease;
+}
+
+.hero-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* Правая колонка */
+.hero-right {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 10px;
+}
+
+/* Статистика */
+.hero-stats {
+    display: flex;
+    gap: 70px;
+}
+
+.stat-item {
+    text-align: right;
+    color: #fff;
+}
+
+.stat-item .num {
+    font-size: 62px;
+    font-weight: 200;
+    line-height: 1;
+}
+
+.stat-item .label {
+    display: block;
+    font-size: 14px;
+    opacity: 0.6;
+    margin-top: 8px;
+}
+
+/* Адаптив */
+@media (max-width: 1200px) {
+    .hero-title { font-size: 70px; }
+    .num { font-size: 48px; }
+}
+
+@media (max-width: 900px) {
+    .hero-inner { flex-direction: column; align-items: flex-start; }
+    .hero-right { margin-top: 40px; }
+}
+
+@media (max-width: 600px) {
+    .hero { padding: 20px; padding-top: 100px; }
+    .hero-title { font-size: 48px; }
+    .hero-sub { font-size: 16px; }
+    .hero-stats { gap: 40px; }
+    .num { font-size: 36px; }
+}
+
+
 /* ---------- контент ---------- */
 .hero__content {
     max-width: 780px;
