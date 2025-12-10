@@ -180,3 +180,17 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector(".hero__content").classList.add("show");
     }, 200);
 });
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const hero = document.querySelector(".hero");
+    hero.style.opacity = "0";
+    hero.style.transform = "translateY(40px)";
+    hero.style.transition = "1s ease";
+
+    setTimeout(() => {
+        hero.style.opacity = "1";
+        hero.style.transform = "translateY(0)";
+    }, 200);
+});
+</script>
+
