@@ -1244,3 +1244,483 @@ p {
     letter-spacing: 0.1em;
     color: #666;
 }
+
+/* Добавь эти стили к существующим */
+
+/* Стили для динамических текстовых блоков */
+.text-block {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.text-block h1 {
+    font-size: clamp(3rem, 6vw, 8rem);
+    font-weight: 250;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.text-block h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 1px;
+    background: #005439;
+    transition: width 0.3s ease;
+}
+
+.text-block:hover h1::after {
+    width: 100%;
+}
+
+.text-block p {
+    font-size: clamp(1rem, 1.2vw, 1.4rem);
+    line-height: 1.6;
+    color: #4a4a4a;
+    max-width: 600px;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.text-block .details {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.text-block .details p {
+    margin-bottom: 0.3rem;
+    font-size: inherit;
+}
+
+.text-block .btn {
+    margin-top: 1rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.text-block .btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: #005439;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: -1;
+}
+
+.text-block .btn:hover::before {
+    width: 300%;
+    height: 300%;
+}
+
+/* Стили для изображений с наложением текста */
+.image-with-text {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.image-with-text .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.image-with-text:hover .background-image {
+    transform: scale(1.05);
+}
+
+.image-with-text .content-overlay {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 4rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7) 30%);
+    color: white;
+}
+
+.image-with-text .content-overlay h1 {
+    color: white;
+    font-size: clamp(2.5rem, 5vw, 6rem);
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.image-with-text .content-overlay p {
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 500px;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* Стили для разделенных секций */
+.split-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    position: relative;
+}
+
+.split-section .text-side {
+    padding: 8rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #f2f1f0;
+    position: relative;
+}
+
+.split-section .image-side {
+    position: relative;
+    overflow: hidden;
+}
+
+.split-section .image-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s ease;
+}
+
+.split-section .image-side:hover img {
+    transform: scale(1.05);
+}
+
+.split-section.reverse {
+    grid-template-columns: 1fr 1fr;
+    direction: rtl;
+}
+
+.split-section.reverse .text-side {
+    direction: ltr;
+}
+
+/* Стили для плавающего текста */
+.floating-text {
+    position: absolute;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.floating-text h1 {
+    font-size: 10vw;
+    font-weight: 200;
+    color: rgba(255, 255, 255, 0.1);
+    line-height: 1;
+    margin: 0;
+}
+
+/* Стили для анимированного появления текста */
+.reveal-text {
+    position: relative;
+    overflow: hidden;
+}
+
+.reveal-text h1,
+.reveal-text p {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealText 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.reveal-text p {
+    animation-delay: 0.3s;
+}
+
+.reveal-text .details {
+    animation-delay: 0.5s;
+}
+
+.reveal-text .btn {
+    animation-delay: 0.7s;
+}
+
+@keyframes revealText {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для сетки текстовых блоков */
+.text-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    padding: 4rem 0;
+}
+
+.text-grid-item {
+    position: relative;
+    padding: 2rem;
+    border-left: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.text-grid-item:hover {
+    border-left-color: #005439;
+    padding-left: 3rem;
+    background: rgba(0, 84, 57, 0.02);
+}
+
+.text-grid-item h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.text-grid-item .btn {
+    margin-top: 1.5rem;
+}
+
+/* Стили для минималистичных текстовых блоков */
+.minimal-text-block {
+    padding: 6rem 4rem;
+    background: white;
+    position: relative;
+}
+
+.minimal-text-block h1 {
+    font-size: 4.5rem;
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.minimal-text-block h1 span {
+    font-weight: 200;
+    color: #666;
+}
+
+.minimal-text-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 1px;
+    background: #005439;
+}
+
+.minimal-text-block .line-divider {
+    width: 100px;
+    height: 1px;
+    background: #b4b4b3;
+    margin: 2rem 0;
+}
+
+/* Стили для полной ширины текста */
+.full-width-text {
+    padding: 8rem 0;
+    background: #f2f1f0;
+    text-align: center;
+}
+
+.full-width-text h1 {
+    font-size: 5vw;
+    font-weight: 300;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    line-height: 1.1;
+}
+
+.full-width-text p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    color: #666;
+}
+
+/* Стили для текста с боковым декоративным элементом */
+.side-decorated-text {
+    padding: 4rem;
+    border-left: 4px solid #005439;
+    margin: 3rem 0;
+    position: relative;
+}
+
+.side-decorated-text::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -4px;
+    width: 8px;
+    height: 8px;
+    background: #005439;
+    border-radius: 50%;
+}
+
+.side-decorated-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Стили для текста с фоновым узором */
+.patterned-text {
+    position: relative;
+    padding: 6rem 4rem;
+    overflow: hidden;
+}
+
+.patterned-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNFMkUxRTIiIGZpbGwtb3BhY2l0eT0iMC4yIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIxIi8+PC9nPjwvZz48L3N2Zz4=');
+    opacity: 0.1;
+    z-index: -1;
+}
+
+.patterned-text h1 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Стили для текста с градиентным фоном */
+.gradient-text-block {
+    padding: 6rem 4rem;
+    background: linear-gradient(135deg, #f2f1f0 0%, #e8e7e6 100%);
+    position: relative;
+}
+
+.gradient-text-block h1 {
+    font-size: 4.5rem;
+    font-weight: 300;
+    background: linear-gradient(45deg, #252525, #666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 2rem;
+}
+
+/* Стили для текста с цитатой */
+.quote-text-block {
+    padding: 4rem;
+    position: relative;
+}
+
+.quote-text-block::before,
+.quote-text-block::after {
+    content: '"';
+    position: absolute;
+    font-size: 8rem;
+    color: rgba(0, 84, 57, 0.1);
+    font-weight: 300;
+}
+
+.quote-text-block::before {
+    top: 0;
+    left: 1rem;
+}
+
+.quote-text-block::after {
+    bottom: -2rem;
+    right: 1rem;
+}
+
+.quote-text-block h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1.3;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+/* Адаптивность для текстовых блоков */
+@media (max-width: 1024px) {
+    .split-section {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+    
+    .split-section .text-side,
+    .split-section .image-side {
+        min-height: 50vh;
+    }
+    
+    .text-block h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+    }
+    
+    .minimal-text-block h1 {
+        font-size: 3rem;
+    }
+    
+    .full-width-text h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .text-block,
+    .minimal-text-block,
+    .patterned-text,
+    .gradient-text-block {
+        padding: 3rem 2rem;
+    }
+    
+    .image-with-text .content-overlay {
+        padding: 2rem;
+    }
+    
+    .split-section .text-side {
+        padding: 4rem 2rem;
+    }
+    
+    .text-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .floating-text h1 {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .text-block h1 {
+        font-size: 2.2rem;
+    }
+    
+    .minimal-text-block h1 {
+        font-size: 2.2rem;
+    }
+    
+    .full-width-text h1 {
+        font-size: 2rem;
+    }
+    
+    .image-with-text .content-overlay h1 {
+        font-size: 2rem;
+    }
+}
