@@ -161,4 +161,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     `;
     document.head.appendChild(dynamicStyles);
+
+    
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const v = document.querySelector(".hero__video");
+
+    // Если видео не загрузилось — показать градиент
+    if (v) {
+        v.addEventListener("error", () => {
+            v.style.display = "none";
+        });
+    }
+
+    // Лёгкая анимация появления (добавляется класс)
+    setTimeout(() => {
+        document.querySelector(".hero__content").classList.add("show");
+    }, 200);
 });
