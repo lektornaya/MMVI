@@ -3,79 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MMVI - Каменный партнер</title>
-    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <title>MMVI - Каменный партнёр</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
-    <!-- Основная структура страницы -->
+    <!-- Лоадер -->
+    <div class="loader">
+        <div class="loader-circle"></div>
+    </div>
+
+    <!-- Модальное окно -->
+    <div class="modal" id="projectModal">
+        <button class="modal-close">&times;</button>
+        <img class="modal-content" id="modalImage" src="" alt="">
+    </div>
+
+    <!-- Основная структура -->
     <div class="container">
         <!-- Шапка -->
-        <header class="header">
-            <div class="container">
-                <nav class="nav">
-                    <div class="logo">
-                        <img src="https://static.tildacdn.com/tild6538-6465-4063-b437-616330626237/Group_121.svg" alt="MMVI Logo">
-                    </div>
-                    <div class="nav-links">
-                        <a href="/">Главная</a>
-                        <a href="#projects">Проекты</a>
-                        <a href="#showroom">Шоурум</a>
-                        <a href="#contacts">Контакты</a>
-                        <a href="https://t.me/MMVI_Italia" target="_blank" class="contact-btn">Связаться</a>
-                    </div>
-                    <button class="menu-toggle">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </nav>
-            </div>
+        <header class="header" id="header">
+            <nav class="nav">
+                <div class="logo">
+                    <img src="https://static.tildacdn.com/tild6538-6465-4063-b437-616330626237/Group_121.svg" alt="MMVI">
+                </div>
+                <div class="nav-links" id="navLinks">
+                    <a href="#home" class="nav-link">Главная</a>
+                    <a href="#projects" class="nav-link">Проекты</a>
+                    <a href="#about" class="nav-link">О нас</a>
+                    <a href="#process" class="nav-link">Процесс</a>
+                    <a href="#showroom" class="nav-link">Шоурум</a>
+                    <a href="#contacts" class="nav-link">Контакты</a>
+                    <a href="https://t.me/MMVI_Italia" target="_blank" class="contact-btn">Связаться</a>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
         </header>
 
-        <!-- Герой-секция -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1 class="hero-title">Ваш каменный партнёр,<br><span class="light">готовый к любым вызовам</span></h1>
-                <p class="hero-subtitle">Границы для нас — не преграда. В нашем портфолио есть проекты не только из России: мы работали с камнем для частных домов в Лондоне, Флоренции, Женеве и на Лазурном берегу Франции</p>
+        <!-- Герой секция -->
+        <section class="hero" id="home">
+            <div class="hero-overlay"></div>
+            <div class="hero-content fade-in-up">
+                <h1 class="hero-title">
+                    Ваш каменный партнёр,
+                    <span class="light">готовый к любым вызовам</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Границы для нас — не преграда. В нашем портфолио есть проекты не только из России: мы работали с камнем для частных домов в Лондоне, Флоренции, Женеве и на Лазурном берегу Франции.
+                </p>
+                <div class="project-info">
+                    <p class="text-uppercase">Архитектор: Zoya Mamontova</p>
+                    <p class="text-uppercase">Локация: Москва</p>
+                    <a href="#projects" class="btn btn-primary">Посмотреть проекты</a>
+                </div>
             </div>
-            <div class="hero-image">
-                <img src="https://static.tildacdn.com/tild3736-6561-4366-b265-613263313736/II_1.jpg" alt="Каменная архитектура">
-            </div>
-            
-            <h1>Общественные пространства</h1>
-            <div class="project-info">
-                <p>АРХИТЕКТОР: ZOYA MAMONTOVA</p>
-                <p>ЛОКАЦИЯ: МОСКВА</p>
-                <a href="/projects/neva-tower" class="btn">Подробнее</a>
+            <div class="hero-image image-hover-zoom">
+                <img src="https://static.tildacdn.com/tild3736-6561-4366-b265-613263313736/II_1.jpg" alt="Каменная архитектура MMVI">
             </div>
         </section>
 
         <!-- Преимущества -->
-        <section class="features">
+        <section class="features" id="about">
             <div class="container">
+                <h2 class="section-title text-center">Почему выбирают нас</h2>
                 <div class="features-grid">
-                    <div class="feature-card">
+                    <div class="feature-card fade-in-up">
                         <div class="feature-icon">
                             <i class="fas fa-history"></i>
                         </div>
                         <h3>Давно в индустрии</h3>
                         <p>ВОТ УЖЕ ТРИ ПОКОЛЕНИЯ РАБОТАЕМ С НАТУРАЛЬНЫМ КАМНЕМ</p>
                     </div>
-                    <div class="feature-card">
+                    <div class="feature-card fade-in-up">
                         <div class="feature-icon">
                             <i class="fas fa-drafting-compass"></i>
                         </div>
                         <h3>Проектирование</h3>
                         <p>ГОВОРИМ НА ОДНОМ ЯЗЫКЕ С АРХИТЕКТОРАМИ И ДИЗАЙНЕРАМИ</p>
                     </div>
-                    <div class="feature-card">
+                    <div class="feature-card fade-in-up">
                         <div class="feature-icon">
                             <i class="fas fa-globe-americas"></i>
                         </div>
                         <h3>Работаем по всему миру</h3>
                         <p>Есть представительства в Италии, России, а также агенты в Китае и Турции</p>
                     </div>
-                    <div class="feature-card">
+                    <div class="feature-card fade-in-up">
                         <div class="feature-icon">
                             <i class="fas fa-industry"></i>
                         </div>
@@ -86,105 +106,240 @@
             </div>
         </section>
 
+        <!-- Статистика -->
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item fade-in-up">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Реализованных проектов</div>
+                    </div>
+                    <div class="stat-item fade-in-up">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Лет опыта</div>
+                    </div>
+                    <div class="stat-item fade-in-up">
+                        <div class="stat-number">30+</div>
+                        <div class="stat-label">Специалистов</div>
+                    </div>
+                    <div class="stat-item fade-in-up">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Стран мира</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Возможности -->
         <section class="capabilities">
             <div class="container">
                 <h2 class="section-title">Можем всё</h2>
-                <p class="section-subtitle">В нашем портфолио есть проекты от квартир и ресторанов до общественных пространств и офисов международных компаний</p>
+                <p class="section-subtitle">
+                    В нашем портфолио есть проекты от квартир и ресторанов до общественных пространств и офисов международных компаний
+                </p>
             </div>
         </section>
 
         <!-- О компании -->
         <section class="about">
-            <h2>MMVI — это команда страстных специалистов</h2>
-            <div class="services">
-                <div class="service">Закупок</div>
-                <div class="service">Логистики</div>
-                <div class="service">Проектирования</div>
-                <div class="service">Производства</div>
-                <div class="service">Монтажа</div>
+            <div class="container">
+                <h2>MMVI — это команда страстных специалистов</h2>
+                <div class="services">
+                    <div class="service">Закупок</div>
+                    <div class="service">Логистики</div>
+                    <div class="service">Проектирования</div>
+                    <div class="service">Производства</div>
+                    <div class="service">Монтажа</div>
+                </div>
             </div>
         </section>
 
         <!-- Портфолио -->
-        <section class="portfolio">
+        <section class="portfolio" id="projects">
+            <!-- Пентхаусы -->
             <div class="portfolio-item">
-                <div class="portfolio-image">
-                    <img src="https://static.tildacdn.com/tild6232-3330-4435-b137-313665386533/_web_54_of_121.jpg" alt="Пентхаусы">
+                <div class="portfolio-image image-hover-zoom">
+                    <img src="https://static.tildacdn.com/tild6232-3330-4435-b137-313665386533/_web_54_of_121.jpg" alt="Пентхаусы" data-modal-src="https://static.tildacdn.com/tild6232-3330-4435-b137-313665386533/_web_54_of_121.jpg">
                     <div class="portfolio-overlay">
                         <h3>Пентхаусы</h3>
                     </div>
                 </div>
                 <div class="portfolio-info">
-                    <p>БЮРО: SL Architects<br>ЛОКАЦИЯ: Москва<br>МАТЕРИАЛЫ: Quarzite Patagonia</p>
-                    <a href="/projects/pentkhaus-na-mosfilmovskoy" class="btn">Подробнее</a>
+                    <p class="text-uppercase">
+                        БЮРО: SL Architects<br>
+                        ЛОКАЦИЯ: Москва<br>
+                        МАТЕРИАЛЫ: Quarzite Patagonia
+                    </p>
+                    <a href="/projects/pentkhaus-na-mosfilmovskoy" class="btn btn-outline">Подробнее</a>
                 </div>
             </div>
             
+            <!-- Квартиры -->
             <div class="portfolio-item">
-                <div class="portfolio-image">
-                    <img src="https://static.tildacdn.com/tild3535-3465-4539-b531-333262343431/Rectangle_119.jpg" alt="Квартиры">
+                <div class="portfolio-image image-hover-zoom">
+                    <img src="https://static.tildacdn.com/tild3535-3465-4539-b531-333262343431/Rectangle_119.jpg" alt="Квартиры" data-modal-src="https://static.tildacdn.com/tild3535-3465-4539-b531-333262343431/Rectangle_119.jpg">
                     <div class="portfolio-overlay">
                         <h3>Квартиры</h3>
                     </div>
                 </div>
                 <div class="portfolio-info">
-                    <p>Архитектор: Борис Уборевич-Боровский<br>Локация: Москва<br>Материалы: Quarzite Patagonia, Quarzite Rosa</p>
-                    <a href="/projects/kvartira-na-ulitse-polyanka" class="btn">Подробнее</a>
+                    <p class="text-uppercase">
+                        Архитектор: Борис Уборевич-Боровский<br>
+                        Локация: Москва<br>
+                        Материалы: Quarzite Patagonia, Quarzite Rosa
+                    </p>
+                    <a href="/projects/kvartira-na-ulitse-polyanka" class="btn btn-outline">Подробнее</a>
                 </div>
             </div>
             
+            <!-- Отели и гостиницы -->
             <div class="portfolio-item">
-                <div class="portfolio-image">
-                    <img src="https://static.tildacdn.com/tild3238-3638-4363-a666-396463643734/Rectangle_118-1.jpg" alt="Отели и гостиницы">
+                <div class="portfolio-image image-hover-zoom">
+                    <img src="https://static.tildacdn.com/tild3238-3638-4363-a666-396463643734/Rectangle_118-1.jpg" alt="Отели и гостиницы" data-modal-src="https://static.tildacdn.com/tild3238-3638-4363-a666-396463643734/Rectangle_118-1.jpg">
                     <div class="portfolio-overlay">
                         <h3>Отели и гостиницы</h3>
                     </div>
                 </div>
                 <div class="portfolio-info">
-                    <p>HYATT HOTEL SOCHI<br>БЮРО: SL ARCHITECTS<br>ЛОКАЦИЯ: СОЧИ<br>МАТЕРИАЛЫ: ERIBA BLUE MOCA CREMA</p>
-                    <a href="/projects/hyatt-hotel-sochi" class="btn">Подробнее</a>
+                    <p class="text-uppercase">
+                        HYATT HOTEL SOCHI<br>
+                        БЮРО: SL ARCHITECTS<br>
+                        ЛОКАЦИЯ: СОЧИ<br>
+                        МАТЕРИАЛЫ: ERIBA BLUE MOCA CREMA
+                    </p>
+                    <a href="/projects/hyatt-hotel-sochi" class="btn btn-outline">Подробнее</a>
                 </div>
             </div>
             
+            <!-- Хамамы и бассейны -->
             <div class="portfolio-item">
-                <div class="portfolio-image">
-                    <img src="https://static.tildacdn.com/tild3364-3034-4534-b238-663832383131/Rectangle_119-1.jpg" alt="Хамамы и бассейны">
+                <div class="portfolio-image image-hover-zoom">
+                    <img src="https://static.tildacdn.com/tild3364-3034-4534-b238-663832383131/Rectangle_119-1.jpg" alt="Хамамы и бассейны" data-modal-src="https://static.tildacdn.com/tild3364-3034-4534-b238-663832383131/Rectangle_119-1.jpg">
                     <div class="portfolio-overlay">
                         <h3>Хамамы и бассейны</h3>
                     </div>
                 </div>
                 <div class="portfolio-info">
-                    <p>ДИЗАЙНЕР: ЕВГЕНИЯ ТУКТАРОВА<br>ЛОКАЦИЯ: МОСКВА<br>МАТЕРИАЛЫ: QUARZITE CRISTALLO, FIOR DI BOSCO, NERO MARQUINO, THASSOS, MAGMA BLACK, VOLAKAS</p>
-                    <a href="/projects/dom-v-poselke-truvil" class="btn">Подробнее</a>
+                    <p class="text-uppercase">
+                        ДИЗАЙНЕР: ЕВГЕНИЯ ТУКТАРОВА<br>
+                        ЛОКАЦИЯ: МОСКВА<br>
+                        МАТЕРИАЛЫ: QUARZITE CRISTALLO, FIOR DI BOSCO, NERO MARQUINO, THASSOS, MAGMA BLACK, VOLAKAS
+                    </p>
+                    <a href="/projects/dom-v-poselke-truvil" class="btn btn-outline">Подробнее</a>
                 </div>
             </div>
         </section>
 
-        <!-- Галерея проектов -->
-        <section class="projects" id="projects">
-            <h2>Наши работы</h2>
-            <div class="swiper projects-slider">
-                <div class="swiper-wrapper">
-                    <!-- Слайды будут добавлены через JS -->
+        <!-- Сетка изображений -->
+        <section class="about">
+            <div class="container">
+                <h2>Наши работы в деталях</h2>
+                <div class="image-grid">
+                    <div class="grid-item">
+                        <img src="https://static.tildacdn.com/tild3535-3465-4539-b531-333262343431/Rectangle_119.jpg" alt="Деталь интерьера 1" data-modal-src="https://static.tildacdn.com/tild3535-3465-4539-b531-333262343431/Rectangle_119.jpg">
+                    </div>
+                    <div class="grid-item">
+                        <img src="https://static.tildacdn.com/tild3238-3638-4363-a666-396463643734/Rectangle_118-1.jpg" alt="Деталь интерьера 2" data-modal-src="https://static.tildacdn.com/tild3238-3638-4363-a666-396463643734/Rectangle_118-1.jpg">
+                    </div>
+                    <div class="grid-item">
+                        <img src="https://static.tildacdn.com/tild3364-3034-4534-b238-663832383131/Rectangle_119-1.jpg" alt="Деталь интерьера 3" data-modal-src="https://static.tildacdn.com/tild3364-3034-4534-b238-663832383131/Rectangle_119-1.jpg">
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Медиа -->
-        <section class="media">
-            <h2>Наши работы в медиа</h2>
-            <div class="swiper media-slider">
-                <div class="swiper-wrapper">
-                    <!-- Слайды медиа -->
+        <!-- Процесс работы -->
+        <section class="process" id="process">
+            <div class="container">
+                <h2 class="section-title text-center">Наш процесс работы</h2>
+                <div class="process-steps">
+                    <div class="process-step fade-in-up">
+                        <div class="step-number">01</div>
+                        <h3>Консультация</h3>
+                        <p>Обсуждение проекта, анализ требований и предпочтений клиента</p>
+                    </div>
+                    <div class="process-step fade-in-up">
+                        <div class="step-number">02</div>
+                        <h3>Проектирование</h3>
+                        <p>Разработка технической документации и 3D-визуализаций</p>
+                    </div>
+                    <div class="process-step fade-in-up">
+                        <div class="step-number">03</div>
+                        <h3>Производство</h3>
+                        <p>Изготовление элементов из натурального камня на собственном производстве</p>
+                    </div>
+                    <div class="process-step fade-in-up">
+                        <div class="step-number">04</div>
+                        <h3>Монтаж</h3>
+                        <p>Профессиональная установка и финальная отделка на объекте</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Слайдер проектов -->
+        <section class="projects">
+            <div class="container">
+                <h2>Наши работы</h2>
+                <div class="swiper projects-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="https://static.tildacdn.com/tild6232-3330-4435-b137-313665386533/_web_54_of_121.jpg" alt="Проект 1">
+                            <div class="swiper-slide-content">
+                                <h3>Нева Тауэр</h3>
+                                <p>Общественные пространства</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://static.tildacdn.com/tild3535-3465-4539-b531-333262343431/Rectangle_119.jpg" alt="Проект 2">
+                            <div class="swiper-slide-content">
+                                <h3>Квартира на Полянке</h3>
+                                <p>Частный интерьер</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://static.tildacdn.com/tild3238-3638-4363-a666-396463643734/Rectangle_118-1.jpg" alt="Проект 3">
+                            <div class="swiper-slide-content">
+                                <h3>Hyatt Hotel</h3>
+                                <p>Сочи</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </section>
 
         <!-- Шоурум -->
         <section class="showroom" id="showroom">
-            <h2>Шоурум в центре Москвы</h2>
-            <div id="map"></div>
+            <div class="container">
+                <h2 class="section-title text-center">Шоурум в центре Москвы</h2>
+                <p class="section-subtitle">Приходите посмотреть материалы и обсудить ваш проект</p>
+                <div id="map"></div>
+            </div>
+        </section>
+
+        <!-- Форма обратной связи -->
+        <section class="about">
+            <div class="container">
+                <h2>Обсудим ваш проект?</h2>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Имя</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="message">Сообщение</label>
+                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
+            </div>
         </section>
 
         <!-- Футер -->
@@ -192,30 +347,35 @@
             <div class="container">
                 <div class="footer-content">
                     <div class="footer-logo">
-                        <img src="https://static.tildacdn.com/tild6538-6465-4063-b437-616330626237/Group_121.svg" alt="MMVI Logo">
-                        <p>MMVI — это команда страстных специалистов</p>
+                        <img src="https://static.tildacdn.com/tild6538-6465-4063-b437-616330626237/Group_121.svg" alt="MMVI">
+                        <p>MMVI — это команда страстных специалистов по работе с натуральным камнем. Мы создаём уникальные пространства, которые вдохновляют и восхищают.</p>
                     </div>
-                    <div class="footer-contact">
-                        <h4>Контакты</h4>
+                    <div class="footer-section">
+                        <h3>Контакты</h3>
+                        <p>Москва, Марксистская 20, стр 1</p>
+                        <p>+7 (495) 670-70-04</p>
+                        <p>office@mmvi.pro</p>
                         <a href="https://t.me/MMVI_Italia" target="_blank" class="telegram-link">
                             <i class="fab fa-telegram"></i> Написать в Telegram
                         </a>
                     </div>
+                    <div class="footer-section">
+                        <h3>Проекты</h3>
+                        <a href="/projects">Все проекты</a>
+                        <a href="/projects#!/tab/1232142066-2">Частные интерьеры</a>
+                        <a href="/projects#!/tab/1232142066-3">Коммерческие объекты</a>
+                        <a href="/projects#!/tab/1232142066-4">Общественные пространства</a>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Услуги</h3>
+                        <a href="#process">Проектирование</a>
+                        <a href="#process">Производство</a>
+                        <a href="#process">Монтаж</a>
+                        <a href="#process">Консультации</a>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Контакты</h3>
-                    <p>Москва, Марксистская 20, стр 1</p>
-                    <p>+7 (495) 670-70-04</p>
-                    <p>office@mmvi.pro</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Проекты</h3>
-                    <a href="/projects">Все</a>
-                    <a href="/projects#!/tab/1232142066-2">Частные</a>
-                    <a href="/projects#!/tab/1232142066-3">Коммерческие</a>
+                <div class="footer-bottom">
+                    <p>© 2024 MMVI. Все права защищены.</p>
                 </div>
             </div>
         </footer>
@@ -226,6 +386,5 @@
     <script src="js/swiper-bundle.min.js"></script>
     <script src="js/gsap.min.js"></script>
     <script src="js/script.js"></script>
-    <script src="script.js"></script>
 </body>
 </html>
