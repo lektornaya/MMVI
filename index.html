@@ -4,183 +4,228 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MMVI - Каменный партнер</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
-    <!-- Шапка -->
-    <header class="header">
-        <nav class="nav container">
-            <a href="/" class="logo">
-                <img src="https://static.tildacdn.com/tild6563-3630-4663-b761-393939643731/MMVI_logo_full.svg" alt="MMVI" width="120" height="25">
-            </a>
+    <!-- Основная структура страницы -->
+    <div class="container">
+        <!-- Шапка -->
+        <header class="header">
+            <div class="container">
+                <nav class="nav">
+                    <div class="logo">
+                        <img src="https://static.tildacdn.com/tild6538-6465-4063-b437-616330626237/Group_121.svg" alt="MMVI Logo">
+                    </div>
+                    <div class="nav-links">
+                        <a href="/">Главная</a>
+                        <a href="#projects">Проекты</a>
+                        <a href="#showroom">Шоурум</a>
+                        <a href="#contacts">Контакты</a>
+                        <a href="https://t.me/MMVI_Italia" target="_blank" class="contact-btn">Связаться</a>
+                    </div>
+                    <button class="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Герой-секция -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Ваш каменный партнёр,<br><span class="light">готовый к любым вызовам</span></h1>
+                <p class="hero-subtitle">Границы для нас — не преграда. В нашем портфолио есть проекты не только из России: мы работали с камнем для частных домов в Лондоне, Флоренции, Женеве и на Лазурном берегу Франции</p>
+            </div>
+            <div class="hero-image">
+                <img src="https://static.tildacdn.com/tild3736-6561-4366-b265-613263313736/II_1.jpg" alt="Каменная архитектура">
+            </div>
             
-            <div class="nav-links">
-                <a href="/projects">Проекты</a>
-                <a href="#showroom">Шоурум</a>
-                <a href="#contacts">Контакты</a>
+            <h1>Общественные пространства</h1>
+            <div class="project-info">
+                <p>АРХИТЕКТОР: ZOYA MAMONTOVA</p>
+                <p>ЛОКАЦИЯ: МОСКВА</p>
+                <a href="/projects/neva-tower" class="btn">Подробнее</a>
+            </div>
+        </section>
+
+        <!-- Преимущества -->
+        <section class="features">
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <h3>Давно в индустрии</h3>
+                        <p>ВОТ УЖЕ ТРИ ПОКОЛЕНИЯ РАБОТАЕМ С НАТУРАЛЬНЫМ КАМНЕМ</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <h3>Проектирование</h3>
+                        <p>ГОВОРИМ НА ОДНОМ ЯЗЫКЕ С АРХИТЕКТОРАМИ И ДИЗАЙНЕРАМИ</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <h3>Работаем по всему миру</h3>
+                        <p>Есть представительства в Италии, России, а также агенты в Китае и Турции</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3>Собственное производство</h3>
+                        <p>Проектно-технический отдел позволяет реализовывать задачи любой сложности</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Возможности -->
+        <section class="capabilities">
+            <div class="container">
+                <h2 class="section-title">Можем всё</h2>
+                <p class="section-subtitle">В нашем портфолио есть проекты от квартир и ресторанов до общественных пространств и офисов международных компаний</p>
+            </div>
+        </section>
+
+        <!-- О компании -->
+        <section class="about">
+            <h2>MMVI — это команда страстных специалистов</h2>
+            <div class="services">
+                <div class="service">Закупок</div>
+                <div class="service">Логистики</div>
+                <div class="service">Проектирования</div>
+                <div class="service">Производства</div>
+                <div class="service">Монтажа</div>
+            </div>
+        </section>
+
+        <!-- Портфолио -->
+        <section class="portfolio">
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="https://static.tildacdn.com/tild6232-3330-4435-b137-313665386533/_web_54_of_121.jpg" alt="Пентхаусы">
+                    <div class="portfolio-overlay">
+                        <h3>Пентхаусы</h3>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p>БЮРО: SL Architects<br>ЛОКАЦИЯ: Москва<br>МАТЕРИАЛЫ: Quarzite Patagonia</p>
+                    <a href="/projects/pentkhaus-na-mosfilmovskoy" class="btn">Подробнее</a>
+                </div>
             </div>
             
-            <button class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
-        </nav>
-    </header>
-
-    <!-- Герой-секция -->
-    <section class="hero">
-        <div class="hero-content container">
-            <h1 class="hero-title">Ваш каменный партнёр,<br><span class="light">готовый к любым вызовам</span></h1>
-            <p class="hero-subtitle">Границы для нас — не преграда. В нашем портфолио есть проекты не только из России: мы работали с камнем для частных домов в Лондоне, Флоренции, Женеве и на Лазурном берегу Франции</p>
-        </div>
-        <div class="hero-image">
-            <img src="https://static.tildacdn.com/tild3736-6561-4366-b265-613263313736/II_1.jpg" alt="Каменная архитектура">
-        </div>
-    </section>
-
-    <!-- Преимущества -->
-    <section class="features">
-        <div class="container">
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-history"></i>
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="https://static.tildacdn.com/tild3535-3465-4539-b531-333262343431/Rectangle_119.jpg" alt="Квартиры">
+                    <div class="portfolio-overlay">
+                        <h3>Квартиры</h3>
                     </div>
-                    <h3>Давно в индустрии</h3>
-                    <p>ВОТ УЖЕ ТРИ ПОКОЛЕНИЯ РАБОТАЕМ С НАТУРАЛЬНЫМ КАМНЕМ</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-drafting-compass"></i>
+                <div class="portfolio-info">
+                    <p>Архитектор: Борис Уборевич-Боровский<br>Локация: Москва<br>Материалы: Quarzite Patagonia, Quarzite Rosa</p>
+                    <a href="/projects/kvartira-na-ulitse-polyanka" class="btn">Подробнее</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="https://static.tildacdn.com/tild3238-3638-4363-a666-396463643734/Rectangle_118-1.jpg" alt="Отели и гостиницы">
+                    <div class="portfolio-overlay">
+                        <h3>Отели и гостиницы</h3>
                     </div>
-                    <h3>Проектирование</h3>
-                    <p>ГОВОРИМ НА ОДНОМ ЯЗЫКЕ С АРХИТЕКТОРАМИ И ДИЗАЙНЕРАМИ</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-globe-americas"></i>
+                <div class="portfolio-info">
+                    <p>HYATT HOTEL SOCHI<br>БЮРО: SL ARCHITECTS<br>ЛОКАЦИЯ: СОЧИ<br>МАТЕРИАЛЫ: ERIBA BLUE MOCA CREMA</p>
+                    <a href="/projects/hyatt-hotel-sochi" class="btn">Подробнее</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="https://static.tildacdn.com/tild3364-3034-4534-b238-663832383131/Rectangle_119-1.jpg" alt="Хамамы и бассейны">
+                    <div class="portfolio-overlay">
+                        <h3>Хамамы и бассейны</h3>
                     </div>
-                    <h3>Работаем по всему миру</h3>
-                    <p>Есть представительства в Италии, России, а также агенты в Китае и Турции</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-industry"></i>
+                <div class="portfolio-info">
+                    <p>ДИЗАЙНЕР: ЕВГЕНИЯ ТУКТАРОВА<br>ЛОКАЦИЯ: МОСКВА<br>МАТЕРИАЛЫ: QUARZITE CRISTALLO, FIOR DI BOSCO, NERO MARQUINO, THASSOS, MAGMA BLACK, VOLAKAS</p>
+                    <a href="/projects/dom-v-poselke-truvil" class="btn">Подробнее</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Галерея проектов -->
+        <section class="projects" id="projects">
+            <h2>Наши работы</h2>
+            <div class="swiper projects-slider">
+                <div class="swiper-wrapper">
+                    <!-- Слайды будут добавлены через JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Медиа -->
+        <section class="media">
+            <h2>Наши работы в медиа</h2>
+            <div class="swiper media-slider">
+                <div class="swiper-wrapper">
+                    <!-- Слайды медиа -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Шоурум -->
+        <section class="showroom" id="showroom">
+            <h2>Шоурум в центре Москвы</h2>
+            <div id="map"></div>
+        </section>
+
+        <!-- Футер -->
+        <footer class="footer" id="contacts">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <img src="https://static.tildacdn.com/tild6538-6465-4063-b437-616330626237/Group_121.svg" alt="MMVI Logo">
+                        <p>MMVI — это команда страстных специалистов</p>
                     </div>
-                    <h3>Собственное производство</h3>
-                    <p>Проектно-технический отдел позволяет реализовывать задачи любой сложности</p>
+                    <div class="footer-contact">
+                        <h4>Контакты</h4>
+                        <a href="https://t.me/MMVI_Italia" target="_blank" class="telegram-link">
+                            <i class="fab fa-telegram"></i> Написать в Telegram
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Возможности -->
-    <section class="capabilities">
-        <div class="container">
-            <h2 class="section-title">Можем всё</h2>
-            <p class="section-subtitle">В нашем портфолио есть проекты от квартир и ресторанов до общественных пространств и офисов международных компаний</p>
-        </div>
-    </section>
-
-    <!-- Портфолио -->
-    <section class="portfolio">
-        <div class="portfolio-item">
-            <div class="portfolio-image">
-                <img src="https://static.tildacdn.com/tild6232-3330-4435-b137-313665386533/_web_54_of_121.jpg" alt="Пентхаусы">
-                <div class="portfolio-overlay">
-                    <h3>Пентхаусы</h3>
-                </div>
-            </div>
-            <div class="portfolio-info">
-                <p>БЮРО: SL Architects<br>ЛОКАЦИЯ: Москва<br>МАТЕРИАЛЫ: Quarzite Patagonia</p>
-                <a href="/projects/pentkhaus-na-mosfilmovskoy" class="btn">Подробнее</a>
-            </div>
-        </div>
-        
-        <div class="portfolio-item">
-            <div class="portfolio-image">
-                <img src="https://static.tildacdn.com/tild3535-3465-4539-b531-333262343431/Rectangle_119.jpg" alt="Квартиры">
-                <div class="portfolio-overlay">
-                    <h3>Квартиры</h3>
-                </div>
-            </div>
-            <div class="portfolio-info">
-                <p>Архитектор: Борис Уборевич-Боровский<br>Локация: Москва<br>Материалы: Quarzite Patagonia, Quarzite Rosa</p>
-                <a href="/projects/kvartira-na-ulitse-polyanka" class="btn">Подробнее</a>
-            </div>
-        </div>
-        
-        <div class="portfolio-item">
-            <div class="portfolio-image">
-                <img src="https://static.tildacdn.com/tild3238-3638-4363-a666-396463643734/Rectangle_118-1.jpg" alt="Отели и гостиницы">
-                <div class="portfolio-overlay">
-                    <h3>Отели и гостиницы</h3>
-                </div>
-            </div>
-            <div class="portfolio-info">
-                <p>HYATT HOTEL SOCHI<br>БЮРО: SL ARCHITECTS<br>ЛОКАЦИЯ: СОЧИ<br>МАТЕРИАЛЫ: ERIBA BLUE MOCA CREMA</p>
-                <a href="/projects/hyatt-hotel-sochi" class="btn">Подробнее</a>
-            </div>
-        </div>
-        
-        <div class="portfolio-item">
-            <div class="portfolio-image">
-                <img src="https://static.tildacdn.com/tild3364-3034-4534-b238-663832383131/Rectangle_119-1.jpg" alt="Хамамы и бассейны">
-                <div class="portfolio-overlay">
-                    <h3>Хамамы и бассейны</h3>
-                </div>
-            </div>
-            <div class="portfolio-info">
-                <p>ДИЗАЙНЕР: ЕВГЕНИЯ ТУКТАРОВА<br>ЛОКАЦИЯ: МОСКВА<br>МАТЕРИАЛЫ: QUARZITE CRISTALLO, FIOR DI BOSCO, NERO MARQUINO, THASSOS, MAGMA BLACK, VOLAKAS</p>
-                <a href="/projects/dom-v-poselke-truvil" class="btn">Подробнее</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Шоурум -->
-    <section id="showroom" class="showroom">
-        <div class="container">
-            <h2 class="section-title">Шоурум в центре Москвы</h2>
-            <p>Будем рады видеть вас в нашем шоуруме на Марксистской, 20/1 — познакомим с образцами камня и обсудим ваш проект</p>
-        </div>
-    </section>
-
-    <!-- Футер -->
-    <footer id="contacts" class="footer">
-        <div class="container">
+            
             <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="https://static.tildacdn.com/tild6563-3630-4663-b761-393939643731/MMVI_logo_full.svg" alt="MMVI" width="120" height="25">
-                    <p>MMVI — это команда страстных специалистов</p>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>Москва, Марксистская 20, стр 1</p>
+                    <p>+7 (495) 670-70-04</p>
+                    <p>office@mmvi.pro</p>
                 </div>
-                
-                <div class="footer-info">
-                    <h4>Контакты</h4>
-                    <p>Москва, Россия, 109147 Марксистская 20, стр 1</p>
-                    <p>Тел: <a href="tel:+74956707004">+7 (495) 670-70-04</a></p>
-                    <p>Email: <a href="mailto:office@mmvi.pro">office@mmvi.pro</a></p>
-                    <a href="https://t.me/MMVI_Italia" target="_blank" class="telegram-link">
-                        <i class="fab fa-telegram"></i> Написать в Telegram
-                    </a>
-                </div>
-                
-                <div class="footer-projects">
-                    <h4>Проекты</h4>
-                    <a href="/projects">Все проекты</a>
+                <div class="footer-section">
+                    <h3>Проекты</h3>
+                    <a href="/projects">Все</a>
                     <a href="/projects#!/tab/1232142066-2">Частные</a>
                     <a href="/projects#!/tab/1232142066-3">Коммерческие</a>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>© 2024 MMVI. Все права защищены.</p>
-                <a href="https://disk.yandex.ru/i/CLYK9Wrt46Vzzg">Скачать презентацию</a>
-            </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
+    <!-- Скрипты -->
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=YOUR_API_KEY&lang=ru_RU"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/gsap.min.js"></script>
+    <script src="js/script.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
