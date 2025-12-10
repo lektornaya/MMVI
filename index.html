@@ -34,15 +34,33 @@
     /* offset for fixed header */
     main { padding-top:86px; }
 
-    /* HERO */
-    .hero { min-height:80vh; display:flex; align-items:center; gap:32px; position:relative; padding:40px 0; }
-    .hero-content { max-width:600px; padding:30px; background:rgba(255,255,255,0.88); backdrop-filter: blur(6px); border-radius:8px; box-shadow:0 8px 30px rgba(20,20,20,0.04); }
-    .hero-title { font-size:48px; font-weight:300; line-height:1.06; margin-bottom:12px; letter-spacing:-0.6px; }
-    .hero-title .light { font-weight:200; display:block; }
-    .hero-subtitle { color:#666; font-size:15px; margin-top:8px; }
-    .hero-image { flex:1; position:relative; height:58vh; min-height:360px; border-radius:8px; overflow:hidden; }
-    .hero-image img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.84); transform:scale(1.02); transition:transform .6s; }
-    .hero-image:hover img { transform:scale(1.04); }
+   <section class="hero">
+    <div class="hero__bg">
+        <video autoplay muted loop playsinline class="hero__video">
+            <source src="your-video.mp4" type="video/mp4">
+        </video>
+
+        <!-- fallback gradient если нет видео -->
+        <div class="hero__gradient"></div>
+    </div>
+
+    <div class="hero__content">
+        <h1>
+            Создаю современные<br>
+            сайты с характером
+        </h1>
+
+        <p>
+            Дизайн, разработка и визуальные решения, которые помогают бизнесу расти.
+        </p>
+
+        <div class="hero__buttons">
+            <a href="#contact" class="btn primary">Обсудить проект</a>
+            <a href="#portfolio" class="btn secondary">Портфолио</a>
+        </div>
+    </div>
+</section>
+
 
     /* quick project teaser inside hero */
     .project-teaser { margin-top:20px; display:flex; gap:18px; align-items:center; flex-wrap:wrap; }
