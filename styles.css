@@ -138,6 +138,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    margin-top: 80px; /* Добавляем отступ сверху */
 }
 
 .hero-left {
