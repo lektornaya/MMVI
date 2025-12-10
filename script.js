@@ -1,142 +1,164 @@
-// Мобильное меню
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* ============================
+       М О Б И Л Ь Н О Е  М Е Н Ю
+    ============================== */
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    
-    menuToggle.addEventListener('click', function() {
-        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        
-        if (window.innerWidth <= 768) {
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.right = '0';
-                navLinks.style.backgroundColor = '#f2f1f0';
-                navLinks.style.padding = '20px';
-                navLinks.style.gap = '15px';
-                navLinks.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
-            }
-        }
-    });
-    
-    // Закрытие меню при клике на ссылку
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', function() {
-            if (window.innerWidth <= 768) {
-                navLinks.style.display = 'none';
-            }
-        });
-    });
-    
-    // Адаптивное меню при изменении размера окна
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            navLinks.style.display = 'flex';
-            navLinks.style.flexDirection = 'row';
-            navLinks.style.position = 'static';
-            navLinks.style.backgroundColor = 'transparent';
-            navLinks.style.padding = '0';
-            navLinks.style.boxShadow = 'none';
-        } else {
-            navLinks.style.display = 'none';
-        }
-    });
-    
-    // Плавная прокрутка для якорных ссылок
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-    
-    // Анимация появления элементов при скролле
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animated');
-            }
-        });
-    }, observerOptions);
-    
-    // Наблюдаем за элементами для анимации
-    document.querySelectorAll('.feature-card, .portfolio-item').forEach(el => {
-        observer.observe(el);
-    });
-    
-    // Добавляем класс для анимации
-    const style = document.createElement('style');
-    style.textContent = `
-        .feature-card, .portfolio-item {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .feature-card.animated, .portfolio-item.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    `;
-    document.head.appendChild(style);
-    
-    // Фиксированная шапка
     const header = document.querySelector('.header');
+
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("nav-open");
+        menuToggle.classList.toggle("active");
+    });
+
+    // Закрытие меню по клику на ссылку
+    document.querySelectorAll(".nav-links a").forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("nav-open");
+            menuToggle.classList.remove("active");
+        });
+    });
+
+    // Закрытие при ресайзе
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 768) {
+            navLinks.classList.remove("nav-open");
+            menuToggle.classList.remove("active");
+        }
+    });
+
+
+
+    /* ============================
+       С К Р О Л Л — А Н И М А Ц И И
+    ============================== */
+
+    if (window.gsap) {
+        gsap.from(".hero-content", {
+            opacity: 0,
+            y: 40,
+            duration: 1,
+            ease: "power3.out",
+            delay: 0.2
+        });
+
+        gsap.from(".hero-image img", {
+            opacity: 0,
+            scale: 1.1,
+            duration: 1.4,
+            ease: "power3.out"
+        });
+
+        // Плавное появление блоков при скролле
+        const animatedBlocks = document.querySelectorAll(
+            ".feature-card, .portfolio-item, .section-title, .section-subtitle"
+        );
+
+        animatedBlocks.forEach(block => {
+            gsap.from(block, {
+                scrollTrigger: {
+                    trigger: block,
+                    start: "top 85%",
+                },
+                opacity: 0,
+                y: 40,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+    }
+
+
+    /* ============================
+       П Л А В Н А Я  П Р О К Р У Т К А
+    ============================== */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", (e) => {
+            const id = anchor.getAttribute("href");
+            if (id === "#") return;
+
+            const target = document.querySelector(id);
+            if (!target) return;
+
+            e.preventDefault();
+            const offset = target.getBoundingClientRect().top + window.pageYOffset - 90;
+
+            window.scrollTo({
+                top: offset,
+                behavior: "smooth"
+            });
+        });
+    });
+
+
+
+    /* ============================
+       С К Р Ы В А Ю Щ А Я С Я  Ш А П К А
+    ============================== */
     let lastScroll = 0;
-    
-    window.addEventListener('scroll', function() {
+
+    window.addEventListener("scroll", () => {
         const currentScroll = window.pageYOffset;
-        
+
         if (currentScroll <= 0) {
-            header.classList.remove('scroll-up');
+            header.classList.remove("scroll-up");
             return;
         }
-        
-        if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
-            // Прокрутка вниз
-            header.classList.remove('scroll-up');
-            header.classList.add('scroll-down');
-        } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) {
-            // Прокрутка вверх
-            header.classList.remove('scroll-down');
-            header.classList.add('scroll-up');
+
+        if (currentScroll > lastScroll && !header.classList.contains("scroll-down")) {
+            header.classList.remove("scroll-up");
+            header.classList.add("scroll-down");
+        } else if (currentScroll < lastScroll && header.classList.contains("scroll-down")) {
+            header.classList.remove("scroll-down");
+            header.classList.add("scroll-up");
         }
-        
+
         lastScroll = currentScroll;
     });
-    
-    // Добавляем стили для фиксированной шапки
-    const headerStyle = document.createElement('style');
-    headerStyle.textContent = `
-        .header.scroll-down {
-            transform: translateY(-100%);
+
+
+
+    /* ============================
+       Д О П О Л Н И Т Е Л Ь Н Ы Е  К Л А С С Ы  C S S
+    ============================== */
+    const dynamicStyles = document.createElement("style");
+    dynamicStyles.textContent = `
+        /* Мобильное меню */
+        .nav-links.nav-open {
+            display: flex !important;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            left: 0;
+            background: #f2f1f0;
+            padding: 22px 25px;
+            gap: 18px;
+            box-shadow: 0 7px 25px rgba(0,0,0,0.12);
+            z-index: 1000;
         }
-        
+
+        .menu-toggle.active i {
+            transform: rotate(90deg);
+            transition: 0.3s ease;
+        }
+
+        /* Плавное скрытие шапки */
+        .header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            transition: transform 0.35s ease, box-shadow 0.3s ease;
+        }
+        .header.scroll-down {
+            transform: translateY(-110%);
+        }
         .header.scroll-up {
             transform: translateY(0);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .header {
-            transition: transform 0.3s ease;
+            box-shadow: 0 2px 18px rgba(0,0,0,0.12);
         }
     `;
-    document.head.appendChild(headerStyle);
+    document.head.appendChild(dynamicStyles);
 });
