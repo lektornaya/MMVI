@@ -1,4 +1,7 @@
-/* ========== ОСНОВНЫЕ ИСПРАВЛЕНИЯ ========== */
+/* ===============================
+   ROOT + RESET
+================================ */
+
 :root {
     --primary-color: #005439;
     --secondary-color: #003d29;
@@ -8,162 +11,119 @@
     --white: #ffffff;
 }
 
-/* Сброс и базовые стили */
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 html, body {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
-    position: relative;
 }
 
 body {
-    font-family: 'CoFo', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'CoFo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--background);
     color: var(--text-color);
-    background-color: var(--background);
     line-height: 1.6;
-    font-weight: 300;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
-/* Контейнер с исправлениями */
+/* ===============================
+   CONTAINER
+================================ */
+
 .container {
-    max-width: 1440px;
     width: 100%;
-    margin: 0 auto;
-    padding: 0 40px;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: clamp(16px, 4vw, 40px);
 }
 
-/* ========== ИСПРАВЛЕНИЯ ДЛЯ СЕКЦИЙ ========== */
+/* ===============================
+   HEADER
+================================ */
 
-/* Шапка - исправляем z-index */
 .header {
     position: fixed;
+    inset-inline: 0;
     top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(242, 241, 240, 0.95);
-    padding: 1.2rem 0;
     z-index: 1000;
+    background: rgba(242,241,240,0.95);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 1px solid rgba(0,0,0,.05);
 }
 
-/* ---------------- HERO ---------------- */
-.hero {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 5vw;
-    color: #fff;
-}
-
-/* фоновое видео */
-.hero__bg {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    overflow: hidden;
-}
-
-.hero__video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.55) blur(2px);
-}
-
-/* fallback градиент */
-.hero__gradient {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, #222 0%, #111 65%, #000 100%);
-}
-
-/* ================================
-   MMVI HERO — PIXEL PERFECT
+/* ===============================
+   HERO (ЕДИНСТВЕННЫЙ)
 ================================ */
 
 .hero {
     position: relative;
-    height: 100vh;
+    min-height: 100svh;
     width: 100%;
+    overflow: hidden;
     display: flex;
     align-items: flex-end;
-    padding: 0 60px 80px;
-    overflow: hidden;
-    font-family: "CoFo Sans", "Inter", sans-serif;
+    padding-inline: clamp(16px, 5vw, 60px);
+    padding-bottom: clamp(40px, 8vw, 80px);
+    color: #fff;
 }
 
-/* Фон-видео */
-.hero-bg {
+/* Фон */
+.hero-bg,
+.hero__bg {
     position: absolute;
     inset: 0;
     overflow: hidden;
     z-index: -2;
 }
 
-.hero-bg video {
+.hero-bg video,
+.hero__video {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/* затемнение + шум */
-.hero-overlay {
+/* Затемнение */
+.hero-overlay,
+.hero__gradient {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.85));
-    backdrop-filter: blur(1px);
     z-index: -1;
+    background: linear-gradient(180deg, rgba(0,0,0,.4), rgba(0,0,0,.85));
 }
 
-/* Контейнер */
+/* Контент */
 .hero-inner {
     width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
     display: flex;
-    justify-content: space-between;
+    gap: clamp(30px, 5vw, 80px);
     align-items: flex-end;
-    margin-top: 80px; /* Добавляем отступ сверху */
 }
 
+/* Левая часть */
 .hero-left {
-    max-width: 750px;
+    max-width: 760px;
 }
 
-/* Заголовок */
 .hero-title {
-    font-size: 92px;
+    font-size: clamp(42px, 7vw, 92px);
+    line-height: .95;
     font-weight: 300;
-    line-height: 0.92;
-    color: #fff;
-    letter-spacing: -2px;
     margin-bottom: 25px;
 }
 
-.hero-title span {
-    opacity: 0.5;
-}
-
-/* Текст */
 .hero-sub {
+    max-width: 480px;
     font-size: 18px;
-    color: rgba(255,255,255,0.7);
-    max-width: 450px;
+    opacity: .75;
     margin-bottom: 40px;
 }
 
@@ -171,347 +131,119 @@ body {
 .hero-btn {
     display: inline-block;
     border: 1px solid #fff;
-    color: #fff;
     padding: 14px 32px;
+    color: #fff;
     text-decoration: none;
-    font-size: 16px;
-    letter-spacing: 0.5px;
-    transition: 0.3s ease;
 }
 
-.hero-btn:hover {
-    background: #fff;
-    color: #000;
-}
-
-/* Правая колонка */
+/* Правая часть */
 .hero-right {
     display: flex;
     align-items: flex-end;
-    padding-bottom: 10px;
 }
 
-/* Статистика */
 .hero-stats {
     display: flex;
-    gap: 70px;
+    gap: clamp(24px, 6vw, 70px);
 }
 
 .stat-item {
     text-align: right;
-    color: #fff;
 }
 
 .stat-item .num {
-    font-size: 62px;
-    font-weight: 200;
+    font-size: clamp(36px, 6vw, 62px);
     line-height: 1;
 }
 
-.stat-item .label {
-    display: block;
-    font-size: 14px;
-    opacity: 0.6;
-    margin-top: 8px;
-}
+/* ===============================
+   PORTFOLIO
+================================ */
 
-/* Адаптив */
-@media (max-width: 1200px) {
-    .hero-title { font-size: 70px; }
-    .num { font-size: 48px; }
-}
-
-@media (max-width: 900px) {
-    .hero-inner { flex-direction: column; align-items: flex-start; }
-    .hero-right { margin-top: 40px; }
-}
-
-@media (max-width: 600px) {
-    .hero { padding: 20px; padding-top: 100px; }
-    .hero-title { font-size: 48px; }
-    .hero-sub { font-size: 16px; }
-    .hero-stats { gap: 40px; }
-    .num { font-size: 36px; }
-}
-
-
-/* ---------- контент ---------- */
-.hero__content {
-    max-width: 780px;
-    text-align: center;
-    animation: fadeIn 1.2s ease forwards;
-    opacity: 0;
-}
-
-.hero__content h1 {
-    font-size: clamp(2.4rem, 4vw + 1rem, 4.6rem);
-    line-height: 1.1;
-    font-weight: 600;
-    margin-bottom: 25px;
-}
-
-.hero__content p {
-    font-size: 1.2rem;
-    opacity: 0.9;
-    margin-bottom: 35px;
-}
-
-/* ---------- кнопки ---------- */
-.hero__buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.btn {
-    padding: 14px 28px;
-    border-radius: 50px;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: 0.3s ease;
-}
-
-.btn.primary {
-    background: #ffffff;
-    color: #111;
-}
-
-.btn.primary:hover {
-    background: #d6d6d6;
-}
-
-.btn.secondary {
-    border: 1px solid #fff;
-    color: #fff;
-}
-
-.btn.secondary:hover {
-    background: rgba(255,255,255,0.1);
-}
-
-/* ---------- fade-in ---------- */
-@keyframes fadeIn {
-    to { opacity: 1; transform: translateY(0); }
-    from { opacity: 0; transform: translateY(20px); }
-}
-
-/* ---------- mobile ---------- */
-@media (max-width: 600px) {
-    .hero__content p {
-        font-size: 1rem;
-    }
-
-    .hero__buttons {
-        flex-direction: column;
-        gap: 12px;
-    }
-}
-
-
-/* Исправляем проблему с портфолио */
 .portfolio-item {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    position: relative;
+    width: 100%;
     overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.portfolio-image,
+.portfolio-info {
     width: 100%;
 }
 
 .portfolio-image {
-    flex: 1;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-    width: 100%;
+    min-height: 60vh;
 }
 
 .portfolio-info {
-    flex: 0 0 500px;
-    padding: 4rem;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    z-index: 2;
+    padding: clamp(24px, 6vw, 64px);
 }
 
-/* Исправляем проблему с отступами в адаптиве */
-@media (max-width: 992px) {
-    .portfolio-item {
-        flex-direction: column !important;
-        min-height: auto;
-    }
-    
-    .portfolio-image,
-    .portfolio-info {
-        flex: none;
-        width: 100%;
-        height: auto;
-    }
-    
-    .portfolio-info {
-        height: auto;
-        min-height: 50vh;
-        padding: 3rem 2rem;
-    }
-    
-    .portfolio-image {
-        height: 60vh;
-    }
-}
+/* ===============================
+   TEXT BLOCKS
+================================ */
 
-/* ========== ИСПРАВЛЕНИЯ ДЛЯ ТЕКСТОВЫХ БЛОКОВ ========== */
-
-/* Убираем конфликтующие стили для текста */
 .text-content-block {
-    padding: 4rem 0;
-    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding-block: clamp(40px, 8vw, 80px);
 }
 
 .text-content-block h1,
-.text-content-block h2,
-.text-content-block h3 {
-    font-weight: 300;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-}
-
-.text-content-block h1 {
-    font-size: clamp(3rem, 6vw, 6.5rem);
-    margin-bottom: 1.5rem;
-}
-
 .text-content-block h2 {
-    font-size: clamp(2rem, 4vw, 4.5rem);
-    margin-bottom: 2rem;
+    max-width: 100%;
+    word-wrap: break-word;
 }
 
-/* ========== ИСПРАВЛЕНИЯ ДЛЯ КНОПОК ========== */
+/* ===============================
+   BUTTONS
+================================ */
+
 .btn {
     display: inline-flex;
-    align-items: center;
     justify-content: center;
-    padding: 1rem 2.5rem;
-    background-color: transparent;
-    color: var(--text-color);
+    align-items: center;
+    padding: 14px 32px;
+    border: 1px solid currentColor;
     text-decoration: none;
-    border: 1px solid var(--text-color);
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 0.1em;
-    font-weight: 400;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
 }
 
-.btn-primary {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    color: var(--white);
-}
+/* ===============================
+   IMAGES & MEDIA
+================================ */
 
-/* ========== ИСПРАВЛЕНИЯ ДЛЯ АДАПТИВА ========== */
-@media (max-width: 768px) {
-    .container {
-        padding: 0 20px;
-    }
-    
-    .hero {
-        padding: 5rem 0 3rem;
-        min-height: auto;
-    }
-    
-    .hero-image {
-        position: relative;
-        width: 100%;
-        height: 400px;
-        margin-top: 2rem;
-    }
-    
-    .hero-content {
-        margin-top: 0;
-    }
-    
-    /* Мобильное меню */
-    .nav-links {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: var(--background);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2.5rem;
-        transform: translateX(-100%);
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 999;
-    }
-    
-    .nav-links.active {
-        transform: translateX(0);
-    }
-    
-    .menu-toggle {
-        display: block;
-    }
-}
-
-/* ========== ИСПРАВЛЕНИЯ ДЛЯ ПЕРЕКРЫТИЯ ЭЛЕМЕНТОВ ========== */
-.section {
-    position: relative;
-    z-index: 1;
-}
-
-.section-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-}
-
-/* ========== ИСПРАВЛЕНИЯ ДЛЯ СЕТОК ========== */
-.grid-fix {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    width: 100%;
-}
-
-/* ========== ДОПОЛНИТЕЛЬНЫЕ ИСПРАВЛЕНИЯ ========== */
-
-/* Исправляем проблему с прокруткой */
-.no-scroll {
-    overflow: hidden;
-    height: 100vh;
-}
-
-/* Исправляем проблему с изображениями */
-img {
+img,
+video,
+iframe {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
-/* Исправляем проблему с фоном */
-.background-fix {
-    background-attachment: scroll !important;
-    background-size: cover !important;
-    background-position: center !important;
+/* ===============================
+   GRID
+================================ */
+
+.grid-fix {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
 }
 
-/* Исправляем проблему с высотой секций */
-.min-height-fix {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+/* ===============================
+   MOBILE
+================================ */
+
+@media (max-width: 900px) {
+    .hero-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero-right {
+        margin-top: 40px;
+    }
 }
+
+
