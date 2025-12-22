@@ -10,189 +10,276 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
 
-    * { margin:0; padding:0; box-sizing:border-box; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'CoFo', 'Segoe UI', Tahoma, sans-serif; background:#f2f1f0; color:#1b1b1b; line-height:1.55; -webkit-font-smoothing:antialiased; }
-    .container { width:100%; max-width:1200px; margin:0 auto; padding:0 20px; }
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'CoFo', 'Segoe UI', Tahoma, sans-serif;
+        background: #f2f1f0;
+        color: #1b1b1b;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
 
     /* HEADER */
-    .header { background:#f2f1f0; padding:16px 0; width:100%; position:fixed; top:0; left:0; z-index:1200; border-bottom:1px solid rgba(0,0,0,0.06); }
-    .nav { display:flex; align-items:center; justify-content:space-between; gap:20px; }
-    .logo img { height:34px; display:block; }
-    .nav-links { display:flex; gap:24px; align-items:center; }
-    .nav-links a { text-decoration:none; color:#202020; font-size:14px; text-transform:uppercase; letter-spacing:.5px; transition:color .18s; }
-    .nav-links a:hover { color:#005439; }
-    .contact-btn { background:#005439; color:#fff !important; padding:8px 16px; border-radius:6px; font-size:13px; text-decoration:none; display:inline-block; }
-    .menu-toggle { display:none; background:none; border:none; font-size:22px; color:#202020; cursor:pointer; }
+    .header {
+        background: #f2f1f0;
+        padding: 16px 0;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1200;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
 
-    <section class="hero">
-    <div class="hero-bg">
-        <video autoplay muted playsinline loop>
-            <source src="video/hero.mp4" type="video/mp4">
-        </video>
-        <div class="hero-overlay"></div>
-    </div>
+    .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
 
-    <div class="hero-inner">
-        <div class="hero-left">
-            <h1 class="hero-title">
-                Мы создаём<br>
-                цифровые продукты<br>
-                <span>как в MMVI</span>
-            </h1>
+    .logo img {
+        height: 34px;
+        display: block;
+    }
 
-            <p class="hero-sub">
-                Закрываем весь цикл разработки: исследование, дизайн, продакшн, поддержка.
-            </p>
+    .nav-links {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+    }
 
-            <a href="#" class="hero-btn">Связаться</a>
-        </div>
+    .nav-links a {
+        text-decoration: none;
+        color: #202020;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+        transition: color .18s;
+    }
 
-        <div class="hero-right">
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="num">24</span>
-                    <span class="label">проекта</span>
-                </div>
-                <div class="stat-item">
-                    <span class="num">12</span>
-                    <span class="label">экспертов</span>
-                </div>
-                <div class="stat-item">
-                    <span class="num">7</span>
-                    <span class="label">лет опыта</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    .nav-links a:hover {
+        color: #005439;
+    }
 
-        
+    .contact-btn {
+        background: #005439;
+        color: #fff !important;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 13px;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 22px;
+        color: #202020;
+        cursor: pointer;
+    }
+
     /* offset for fixed header */
-    main { padding-top:86px; }
+    main {
+        padding-top: 86px;
+    }
 
-   <section class="hero">
-    <div class="hero__bg">
-        <video autoplay muted loop playsinline class="hero__video">
-            <source src="your-video.mp4" type="video/mp4">
-        </video>
+    /* HERO */
+    .hero {
+        position: relative;
+        overflow: hidden;
+    }
 
-        <!-- fallback gradient если нет видео -->
-        <div class="hero__gradient"></div>
-    </div>
+    .hero-bg,
+    .hero__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
 
-    <div class="hero__content">
-        <h1>
-            Создаю современные<br>
-            сайты с характером
-        </h1>
+    .hero-bg video,
+    .hero__video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
-        <p>
-            Дизайн, разработка и визуальные решения, которые помогают бизнесу расти.
-        </p>
+    .hero-overlay,
+    .hero__gradient {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8));
+    }
 
-        <div class="hero__buttons">
-            <a href="#contact" class="btn primary">Обсудить проект</a>
-            <a href="#portfolio" class="btn secondary">Портфолио</a>
-        </div>
-    </div>
-</section>
+    .hero-inner,
+    .hero__content {
+        position: relative;
+        z-index: 1;
+        padding: 120px 0 80px;
+    }
 
+    .hero-left,
+    .hero__content {
+        max-width: 600px;
+    }
 
-    /* quick project teaser inside hero */
-.project-teaser { margin-top:20px; display:flex; gap:18px; align-items:center; flex-wrap:wrap; }
-.project-info { font-size:13px; color:#333; background:#fff; padding:12px 16px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.04); }
-.project-info .meta { font-weight:600; font-size:12px; color:#666; margin-bottom:6px; text-transform:uppercase; letter-spacing:.6px; }
+    .hero-title,
+    .hero__content h1 {
+        font-size: 48px;
+        line-height: 1.2;
+        margin-bottom: 24px;
+        color: #fff;
+    }
+
+    .hero-title .light,
+    .hero__content span {
+        font-weight: 300;
+        display: block;
+        margin-top: 8px;
+    }
+
+    .hero-sub,
+    .hero__content p {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.85);
+        margin-bottom: 32px;
+        max-width: 520px;
+    }
+
+    .hero-btn,
+    .hero__buttons .btn {
+        display: inline-block;
+        padding: 14px 28px;
+        background: #005439;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: background 0.3s;
+    }
+
+    .hero-btn:hover,
+    .hero__buttons .btn:hover {
+        background: #003d2a;
+    }
+
+    .project-teaser {
+        margin-top: 20px;
+        display: flex;
+        gap: 18px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .project-info {
+        font-size: 13px;
+        color: #333;
+        background: #fff;
+        padding: 12px 16px;
+        border-radius: 8px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+    }
+
+    .project-info .meta {
+        font-weight: 600;
+        font-size: 12px;
+        color: #666;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: .6px;
+    }
 
     /* FEATURES */
-.features { background:#fff; padding:80px 0; }
-.features-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:28px; }
-.feature-card { background:#f6f6f6; padding:28px; border-radius:10px; text-align:center; transition:transform .28s, box-shadow .28s; }
-.feature-card:hover { transform:translateY(-6px); box-shadow:0 18px 40px rgba(15,15,15,0.06); }
-.feature-icon { font-size:34px; color:#005439; margin-bottom:14px; }
-.feature-card h3 { font-size:16px; margin-bottom:8px; }
+    .features {
+        background: #fff;
+        padding: 80px 0;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 28px;
+        padding: 0 20px;
+    }
+
+    .feature-card {
+        background: #f6f6f6;
+        padding: 28px;
+        border-radius: 10px;
+        text-align: center;
+        transition: transform 0.28s, box-shadow 0.28s;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 40px rgba(15, 15, 15, 0.06);
+    }
+
+    .feature-icon {
+        font-size: 34px;
+        color: #005439;
+        margin-bottom: 14px;
+    }
+
+    .feature-card h3 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
 
     /* CAPABILITIES */
-.capabilities { padding:100px 0; text-align:center; background:#f2f1f0; }
-.section-title { font-size:56px; font-weight:200; letter-spacing:-2px; margin-bottom:10px; }
-.section-subtitle { max-width:640px; margin:0 auto; color:#666; font-size:15px; }
-
-    /* ABOUT / SERVICES */
-.about { padding:80px 0; }
-.about h2 { font-size:26px; font-weight:300; margin-bottom:18px; }
-.services { display:flex; gap:12px; flex-wrap:wrap; margin-top:12px; }
-.service { background:#fff; padding:12px 16px; border-radius:8px; box-shadow:0 8px 24px rgba(10,10,10,0.03); font-size:14px; }
-
-    /* PORTFOLIO */
-.portfolio { padding:0; background:#fff; }
-.portfolio-item { display:flex; min-height:76vh; align-items:stretch; gap:0; }
-.portfolio-item:nth-child(even) { flex-direction:row-reverse; }
-.portfolio-image { flex:1; position:relative; min-height:60vh; overflow:hidden; }
-.portfolio-image img { width:100%; height:100%; object-fit:cover; display:block; transition: transform .6s; }
-.portfolio-image:hover img { transform:scale(1.03); }
-.portfolio-overlay { position:absolute; left:40px; bottom:30px; color:#fff; text-shadow:0 20px 40px rgba(0,0,0,0.45); }
-.portfolio-overlay h3 { font-size:72px; font-weight:300; letter-spacing:-6px; margin:0; }
-.portfolio-info { width:420px; padding:44px; background:#f2f1f0; display:flex; flex-direction:column; justify-content:center; gap:20px; }
-.portfolio-info p { font-size:13px; color:#333; line-height:1.4; text-transform:uppercase; }
-.btn { display:inline-block; padding:10px 22px; border:1px solid #222; background:transparent; text-decoration:none; color:#222; text-transform:uppercase; font-size:13px; border-radius:6px; transition:all .18s; }
-.btn:hover { background:#222; color:#fff; }
-
-.projects, .media { padding:70px 0; background:#fff; }
-.projects h2, .media h2 { margin-bottom:18px; font-weight:300; }
-.swiper { width:100%; padding:12px 0; }
-.swiper-slide { display:flex; align-items:center; justify-content:center; height:660px; background:#eee; border-radius:10px; }
-
-#map { width:100%; height:320px; background:linear-gradient(180deg,#e7e7e7,#f3f3f3); border-radius:8px; }
-
-    /* FOOTER */
-.footer { background:#252525; color:#ccc; padding:42px 0 22px; }
-.footer-content { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:flex-start; }
-.footer-logo img { height:34px; margin-bottom:10px; display:block; }
-.footer-logo p { color:#aaa; font-size:14px; margin-bottom:8px; }
-.footer-section { min-width:180px; }
-.telegram-link { display:inline-flex; align-items:center; gap:8px; color:#8fc4ff; text-decoration:none; }
-
-    /* REFERENCE fixes (если на странице есть reference) */
-.ref-section { padding:80px 0; }
-.ref-block { background:#fff; padding:20px; border-radius:8px; border:1px solid #eee; margin:18px 0; }
-.ref-section table { width:100%; border-collapse:collapse; margin-top:18px; }
-.ref-section th, .ref-section td { padding:10px 12px; border:1px solid #e8e8e8; font-size:14px; }
-
-    /* RESPONSIVE */
-    @media (max-width:1024px) {
-        .hero-title { font-size:40px; }
-        .portfolio-overlay h3 { font-size:48px; left:24px; }
-    }
-    @media (max-width:840px) {
-        .nav-links { display:none; }
-        .menu-toggle { display:block; }
-    }
-    @media (max-width:768px) {
-        .hero { flex-direction:column; }
-        .hero-image { width:100%; height:44vh; order:2; }
-        .hero-content { order:1; width:100%; }
-        .portfolio-item { flex-direction:column; }
-        .portfolio-info { width:100%; padding:26px; }
-        .portfolio-image img { height:48vh; }
-        .section-title { font-size:42px; }
-    }
-    @media (max-width:480px) {
-        .hero-title { font-size:28px; }
-        .portfolio-overlay h3 { font-size:28px; left:16px; bottom:18px; }
-        .section-title { font-size:32px; }
-        .nav-links a { font-size:13px; }
+    .capabilities {
+        padding: 100px 0;
+        text-align: center;
+        background: #f2f1f0;
     }
 
-    /* Mobile menu panel */
-    .mobile-panel { position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.35); display:none; z-index:1300; }
-    .mobile-panel .panel { position:absolute; top:0; right:0; width:280px; max-width:86%; height:100%; background:#fff; padding:28px; transform:translateX(100%); transition:transform .32s; display:flex; flex-direction:column; gap:18px; }
-    .mobile-panel.open { display:block; }
-    .mobile-panel.open .panel { transform:translateX(0); }
-    .mobile-panel .panel a { text-decoration:none; color:#222; font-weight:600; padding:8px 6px; display:block; }
-    .mobile-panel .panel .contact-btn { margin-top:8px; display:inline-block; }
-    </style>
+    .section-title {
+        font-size: 56px;
+        font-weight: 200;
+        letter-spacing: -2px;
+        margin-bottom: 10px;
+        color: #1b1b1b;
+    }
+
+
+    .section-subtitle {
+        max-width: 640px;
+        margin: 0 auto;
+        color: #666;
+        font-size: 15px;
+        line-height: 1.6;
+        text-align: center;
+    }
+    
 </head>
 <body>
     <!-- HEADER -->
@@ -223,7 +310,7 @@
             <!-- HERO -->
             <section class="hero" aria-label="Герой-секция">
                 <div class="hero-content" id="heroContent">
-                    <br><br><br>
+                    <br><br>
                     <h1 class="hero-title">Ваш каменный партнёр,<br><span class="light">готовый к любым вызовам</span></h1>
                     <p class="hero-subtitle">Границы для нас — не преграда. В нашем портфолио есть проекты не только из России: мы работали с камнем для частных домов в Лондоне, Флоренции, Женеве и на Лазурном берегу Франции</p>
 
@@ -361,7 +448,7 @@
                     <div class="swiper media-slider">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <img src="media-n.jpg" alt="Медиа 1">
+                                <img src="media-1.jpg" alt="Медиа 1">
                             </div>
                         </div>
                     </div>
@@ -537,4 +624,3 @@
     </script>
 </body>
 </html>
-
